@@ -40,7 +40,6 @@ import com.dtag.osta.Fragment.profile.ProfileFragment;
 import com.dtag.osta.R;
 import com.dtag.osta.databinding.ActivityMainBinding;
 import com.dtag.osta.network.Interface.Api;
-import com.dtag.osta.network.Interface.ToolbarInterface;
 import com.dtag.osta.network.ResponseModel.wrapper.ApiResponse;
 import com.dtag.osta.network.ResponseModel.wrapper.RetrofitClient;
 import com.dtag.osta.utility.Sal7haSharedPreference;
@@ -82,7 +81,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MainActivity extends AppCompatActivity implements ToolbarInterface,
+public class MainActivity extends AppCompatActivity implements
         BSImagePicker.OnSingleImageSelectedListener,
         BSImagePicker.ImageLoaderDelegate,
         BSImagePicker.OnMultiImageSelectedListener,
@@ -230,16 +229,21 @@ public class MainActivity extends AppCompatActivity implements ToolbarInterface,
     }
 
 
-    @Override
     public void lockDrawer() {
         activityMainBinding.homeDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
 
-    @Override
     public void openDrawer() {
         activityMainBinding.homeDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 
+    public void showBottomMenu() {
+        activityMainBinding.bottomId.setVisibility(View.VISIBLE);
+    }
+
+    public void hideBottomMenu() {
+        activityMainBinding.bottomId.setVisibility(View.GONE);
+    }
 
     @Override
     public void onMultiImageSelected(List<Uri> uriList, String tag) {

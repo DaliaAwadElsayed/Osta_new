@@ -26,7 +26,7 @@
     <string name="mainpage">Main Page</string>
     <string name="profile">Profile</string>
     <string name="offers">Offers</string>
-    <string name="requests">My Orders</string>
+    <string name="requests">Requests</string>
     <string name="helpandsupport">Help and Support</string>
     <string name="aboutapp">About Samoola</string>
     <string name="setting">Setting</string>
@@ -293,4 +293,6 @@
     <string name="facebook_app_id">503181565269665</string>
     <string name="fb_login_protocol_scheme">fb503181565269665</string>
     <string name="facebook_client_token">cf57a37ab697a53030144c6ea3ed5bf0</string>
+    <string name="home">Home</string>
+    <string name="more">More</string>
 </resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/offersFragment"
+        android:icon="@drawable/ic_home"
+        android:iconTint="@color/basicColor"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/salesFragment"
+        android:icon="@drawable/ic_offer"
+        android:iconTint="@color/basicColor"
+        android:title="@string/sales" />
+    <item
+        android:id="@+id/requestsFragment"
+        android:icon="@drawable/ic_requests"
+        android:iconTint="@color/basicColor"
+        android:title="@string/requests" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_profile"
+        android:iconTint="@color/basicColor"
+        android:title="@string/profile" />
+    <item
+        android:id="@+id/moreId"
+        android:icon="@drawable/ic_more"
+        android:iconTint="@color/basicColor"
+        android:title="@string/more" />
+</menu>
