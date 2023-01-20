@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/agentLinear"
+    android:layout_width="@dimen/_250sdp"
+    android:layout_height="@dimen/_300sdp"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@drawable/dialog_bk">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_margin="@dimen/small_margin"
+                android:src="@drawable/noloc" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/medium_margin"
+            android:gravity="center"
+            android:text="@string/Unfortunately"
+            android:textColor="@color/black"
+            android:textSize="@dimen/medum_text_size" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/okDialog"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/very_small_margin"
+            android:backgroundTint="@color/basicColor"
+            android:text="@string/ok"
+            android:textColor="@color/whiteColor"
+            app:cornerRadius="@dimen/small_margin" />
+    </LinearLayout>
+</LinearLayout>

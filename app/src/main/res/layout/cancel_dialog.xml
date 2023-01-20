@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/red_dialog_bk"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/small_margin"
+        android:text="@string/canselationreason"
+        android:textColor="@color/whiteColor"
+        android:textSize="@dimen/small_text_size"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/reason1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/very_small_margin"
+        android:gravity="center"
+        android:text="@string/tryingapp"
+        android:textColor="@color/whiteColor" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/whiteColor"
+        />
+    <TextView
+        android:id="@+id/reason2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/very_small_margin"
+        android:gravity="center"
+        android:text="@string/Iwillasklater"
+        android:textColor="@color/whiteColor" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/whiteColor"
+        />
+    <TextView
+        android:id="@+id/reason3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/very_small_margin"
+        android:gravity="center"
+        android:text="@string/thepriceishigh"
+        android:textColor="@color/whiteColor" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/whiteColor"
+        />
+    <TextView
+        android:id="@+id/reason4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/very_small_margin"
+        android:gravity="center"
+        android:text="@string/noonecontactedme"
+        android:textColor="@color/whiteColor" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/whiteColor"
+        />
+    <TextView
+        android:id="@+id/reason5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/very_small_margin"
+        android:gravity="center"
+        android:text="@string/theappointmentisfarIcantwait"
+        android:textColor="@color/whiteColor" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/whiteColor"
+        />
+    <TextView
+        android:id="@+id/reason6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/very_small_margin"
+        android:gravity="center"
+        android:text="@string/thetechniciandidnotsticktotheappointment"
+        android:textColor="@color/whiteColor" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/whiteColor"
+        />
+    <TextView
+        android:id="@+id/reason7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/very_small_margin"
+        android:gravity="center"
+        android:text="@string/Ididntliketheworker"
+        android:textColor="@color/whiteColor" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/whiteColor"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/keepId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/very_small_margin"
+            android:backgroundTint="@color/whiteColor"
+            android:text="@string/keeptherequest"
+            android:textAllCaps="false"
+            android:textColor="@color/basicColor"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/very_small_margin" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancelId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/very_small_margin"
+            android:backgroundTint="@color/whiteColor"
+            android:text="@string/cancelrequest"
+            android:textAllCaps="false"
+            android:textColor="@color/basicColor"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/very_small_margin" />
+    </LinearLayout>
+
+</LinearLayout>

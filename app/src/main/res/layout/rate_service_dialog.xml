@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ratinglinear"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/red_dialog_bk"
+    android:orientation="vertical">
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/large_margin"
+        android:text="@string/rateserviceplease"
+        android:textColor="@color/whiteColor"
+        android:textSize="@dimen/medum_text_size" />
+
+    <RatingBar
+        android:id="@+id/ratedialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/very_small_margin" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/writecomment"
+        android:textColor="@color/whiteColor"
+        android:textSize="@dimen/medum_text_size" />
+
+    <EditText
+        android:padding="@dimen/very_small_margin"
+        android:gravity="right"
+        android:id="@+id/commentDialogRateService"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/very_small_margin"
+        android:background="@color/whiteColor"
+        android:textColor="@color/basicColor" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/small_margin"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/doneDialogRateService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/very_small_margin"
+            android:layout_marginEnd="@dimen/very_small_margin"
+            android:backgroundTint="@color/whiteColor"
+            android:text="@string/done"
+            android:textColor="@color/basicColor" />
+
+        <Button
+            android:id="@+id/cancelDialogRateService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/very_small_margin"
+            android:layout_marginEnd="@dimen/very_small_margin"
+            android:backgroundTint="@color/whiteColor"
+            android:text="@string/cancel"
+            android:textColor="@color/basicColor" />
+    </LinearLayout>
+</LinearLayout>

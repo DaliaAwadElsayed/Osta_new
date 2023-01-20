@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bk"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imagedialog"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/small_margin"
+        android:src="@drawable/success" />
+
+    <TextView
+        android:id="@+id/textdialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/small_margin"
+        android:text="@string/dearcustomer"
+        android:textColor="@color/black"
+        android:textSize="@dimen/medum_text_size"
+        android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/done"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/basicColor"
+        android:text="@string/done"
+        android:textColor="@color/whiteColor"
+        app:cornerRadius="@dimen/corner_more_radius" />
+</LinearLayout>

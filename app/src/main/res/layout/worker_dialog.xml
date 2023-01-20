@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/agentLinear"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/red_dialog_bk"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/medium_margin"
+            android:text="@string/cannotmakeorder"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/medum_text_size" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/small_margin"
+            android:src="@drawable/sad" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/okDialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/medium_margin"
+            android:backgroundTint="@color/whiteColor"
+            android:text="@string/ok"
+            android:textColor="@color/basicColor"
+            app:cornerRadius="@dimen/small_margin" />
+    </LinearLayout>
+</LinearLayout>

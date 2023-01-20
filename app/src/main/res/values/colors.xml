@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FD6600</color>
+    <color name="colorPrimaryDark">#FD6600</color>
+    <color name="whiteColor">#fff</color>
+    <color name="goldstar">#FFD700</color>
+    <color name="colorAccent">#FD6600</color>
+    <color name="basicColor">#FD6600</color>
+    <color name="errorcolor">#FD6600</color>
+    <color name="black">#000000</color>
+    <color name="pastal">#e6ebff</color>
+    <color name="blue">	#0000FF</color>
+    <color name="blue1">#000080</color>
+    <color name="green">#009900</color>
+    <color name="grey">#464545</color>
+    <color name="gray_border">#808080</color>
+
+    <color name="transparent">#98AFC7</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#FD6600</color>
+</resources>

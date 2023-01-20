@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBarId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:elevation="4dp"
+                android:minHeight="?attr/actionBarSize"
+                app:titleTextColor="@color/black">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center"
+                    android:text="@string/login"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/backId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_keyboard_backspace_24" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="@dimen/_140sdp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_32sdp"
+                android:layout_marginTop="@dimen/large_margin"
+                android:layout_marginEnd="@dimen/_32sdp"
+                android:padding="@dimen/medium_margin"
+                android:src="@drawable/samoola" />
+
+            <EditText
+                android:id="@+id/phonenumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_18sdp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="@dimen/_18sdp"
+                android:fontFamily="@font/urw_geometric_arabic_regular"
+                android:foregroundGravity="center_horizontal"
+                android:gravity="center"
+                android:hint="@string/phoneoremail"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="@color/grey"
+                android:textColorHint="@color/grey"
+                android:textSize="@dimen/medum_text_size" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_18sdp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="@dimen/_18sdp"
+                android:fontFamily="@font/urw_geometric_arabic_regular"
+                android:foregroundGravity="center_horizontal"
+                android:gravity="center"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="@color/grey"
+                android:textColorHint="@color/grey"
+                android:textSize="@dimen/medum_text_size" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/enter"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/phone_input_height"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:background="@color/basicColor"
+                android:fontFamily="@font/urw_geometric_arabic_regular"
+                android:text="@string/login"
+                android:textAllCaps="false"
+                android:textColor="@color/whiteColor"
+                android:textSize="@dimen/large_text_size"
+                app:cornerRadius="@dimen/corner_more_radius" />
+
+            <TextView
+                android:id="@+id/forgetpassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:fontFamily="@font/urw_geometric_arabic_regular"
+                android:text="@string/forgetpassword"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/registertextviewworker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:fontFamily="@font/urw_geometric_arabic_regular"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:text="@string/registeration"
+                android:textColor="@color/black"
+                android:textSize="@dimen/small_margin" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

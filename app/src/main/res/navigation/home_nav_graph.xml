@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.dtag.osta.Fragment.aboutApp.SplashFragment"
+        android:label=""
+        tools:layout="@layout/splash_fragment">
+        <action
+            android:id="@+id/chooseLangFragment"
+            app:destination="@id/chooseLangFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/signinfragment"
+        android:name="com.dtag.osta.Fragment.authentication.user.auth.SignInFragment"
+        android:label="SignInFragment"
+        tools:layout="@layout/sign_in_fragment">
+        <action
+            android:id="@+id/signInPhoneNumberFragment"
+            app:destination="@id/signInPhoneNumberFragment" />
+        <action
+            android:id="@+id/workerSignInFragment"
+            app:destination="@id/workerSignInFragment" />
+        <action
+            android:id="@+id/profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/offersFragment"
+        android:name="com.dtag.osta.Fragment.main.services.OffersFragment"
+        android:label="@string/mainpage"
+        tools:layout="@layout/offers_fragment">
+        <action
+            android:id="@+id/action_offersFragment_to_requestInfromationFragment3"
+            app:destination="@id/requestInfromationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.dtag.osta.Fragment.profile.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/profile_fragment">
+        <action
+            android:id="@+id/offersFragment"
+            app:destination="@id/offersFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_offersFragment"
+            app:destination="@id/offersFragment"
+            app:popUpTo="@id/offersFragment" />
+        <action
+            android:id="@+id/changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerationFragment"
+        android:name="com.dtag.osta.Fragment.authentication.user.auth.RegisterationFragment"
+        android:label="@string/registeration"
+        tools:layout="@layout/registeration_fragment">
+        <action
+            android:id="@+id/mapsFragment"
+            app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/signinfragment"
+            app:destination="@id/signinfragment" />
+        <action
+            android:id="@+id/profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.dtag.osta.Fragment.aboutApp.AboutAppFragment"
+        android:label="@string/aboutsal7ha"
+        tools:layout="@layout/about_app_fragment" />
+    <fragment
+        android:id="@+id/supportFragment"
+        android:name="com.dtag.osta.Fragment.aboutApp.SupportFragment"
+        android:label="@string/support"
+        tools:layout="@layout/support_fragment" />
+
+    <fragment
+        android:id="@+id/signInPhoneNumberFragment"
+        android:name="com.dtag.osta.Fragment.authentication.SignInPhoneNumberFragment"
+        android:label="sign_in_phone_number_fragment"
+        tools:layout="@layout/sign_in_phone_number_fragment">
+        <action
+            android:id="@+id/verificationCodeFragment"
+            app:destination="@id/verificationCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verificationCodeFragment"
+        android:name="com.dtag.osta.Fragment.authentication.VerificationCodeFragment"
+        android:label="verification_code_fragment"
+        tools:layout="@layout/verification_code_fragment">
+        <action
+            android:id="@+id/registerationFragment"
+            app:destination="@id/registerationFragment" />
+        <action
+            android:id="@+id/action_verificationCodeFragment_to_workerRegisterationFragment"
+            app:destination="@id/workerRegisterationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workerSignInFragment"
+        android:name="com.dtag.osta.Fragment.authentication.worker.auth.WorkerSignInFragment"
+        android:label="WorkerSignInFragment"
+        tools:layout="@layout/worker_sign_in_fragment">
+        <action
+            android:id="@+id/signInPhoneNumberFragment"
+            app:destination="@id/signInPhoneNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workerRegisterationFragment"
+        android:name="com.dtag.osta.Fragment.authentication.worker.auth.WorkerRegisterationFragment"
+        android:label="worker_registeration_fragment"
+        tools:layout="@layout/worker_registeration_fragment">
+        <action
+            android:id="@+id/workerSignInFragment"
+            app:destination="@id/workerSignInFragment" />
+        <action
+            android:id="@+id/profileFragment"
+            app:destination="@+id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestsFragment"
+        android:name="com.dtag.osta.Fragment.orders.RequestsFragment"
+        android:label="@string/requests"
+        tools:layout="@layout/requests_fragment">
+        <action
+            android:id="@+id/qrFragment"
+            app:destination="@id/qrFragment" />
+        <action
+            android:id="@+id/supportFragment"
+            app:destination="@id/supportFragment" />
+        <action
+            android:id="@+id/orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestInfromationFragment"
+        android:name="com.dtag.osta.Fragment.main.user.makeOrder.RequestInfromationFragment"
+        android:label="@string/makeordernw"
+        tools:layout="@layout/request_infromation_fragment">
+        <action
+            android:id="@+id/signinfragment"
+            app:destination="@id/signinfragment" />
+        <action
+            android:id="@+id/offersFragment"
+            app:destination="@id/offersFragment" />
+        <action
+            android:id="@+id/MapFragment"
+            app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/signInPhoneNumberFragment"
+            app:destination="@id/signInPhoneNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/qrFragment"
+        android:name="com.dtag.osta.Fragment.main.user.scaning.QrFragment"
+        android:label="@string/Scaning"
+        tools:layout="@layout/qr_fragment">
+        <action
+            android:id="@+id/workerScaningQrResultFragment"
+            app:destination="@id/workerScaningQrResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.dtag.osta.Fragment.aboutApp.SettingFragment"
+        android:label="@string/setting"
+        tools:layout="@layout/setting_fragment" />
+    <fragment
+        android:id="@+id/salesFragment"
+        android:name="com.dtag.osta.Fragment.sales.SalesFragment"
+        android:label="@string/offers"
+        tools:layout="@layout/sales_fragment">
+        <action
+            android:id="@+id/salesDetailsFragment"
+            app:destination="@id/salesDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workerChartFragment"
+        android:name="com.dtag.osta.Fragment.main.agent.WorkerChartFragment"
+        android:label="@string/workerchart"
+        tools:layout="@layout/worker_chart_fragment">
+        <action
+            android:id="@+id/requestsFragment"
+            app:destination="@id/requestsFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/salesDetailsFragment"
+        android:name="com.dtag.osta.Fragment.sales.SalesDetailsFragment"
+        android:label="@string/offers"
+        tools:layout="@layout/sales_details_fragment" />
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.dtag.osta.Fragment.orders.OrderDetailsFragment"
+        android:label="@string/orderdetails"
+        tools:layout="@layout/order_details_fragment" />
+    <fragment
+        android:id="@+id/workerScaningQrResultFragment"
+        android:name="com.dtag.osta.Fragment.main.user.scaning.WorkerScaningQrResultFragment"
+        android:label="@string/scanresult"
+        tools:layout="@layout/worker_scaning_qr_result_fragment">
+        <action
+            android:id="@+id/requestsFragment"
+            app:destination="@id/requestsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.dtag.osta.Fragment.maps.MapFragment"
+        android:label="MapFragment"
+        tools:layout="@layout/map_fragment">
+        <action
+            android:id="@+id/requestInfromationFragment"
+            app:destination="@id/requestInfromationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseLangFragment"
+        android:name="com.dtag.osta.Fragment.aboutApp.ChooseLangFragment"
+        android:label="ChooseLangFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/constructionFragment"
+        android:name="com.dtag.osta.Fragment.ConstructionFragment"
+        android:label="ConstructionFragment" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.dtag.osta.Fragment.ChangePasswordFragment"
+        android:label="ChangePasswordFragment">
+        <action
+            android:id="@+id/profileFragment"
+            app:destination="@id/profileFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/samoolaFragment"
+        android:name="com.dtag.osta.Fragment.aboutApp.SamoolaFragment"
+        android:label="SamoolaFragment" >
+    <action
+        android:id="@+id/chooseLangFragment"
+        app:destination="@id/chooseLangFragment"
+        ></action></fragment>
+</navigation>

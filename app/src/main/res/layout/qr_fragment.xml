@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_48sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/basicColor"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context="com.dtag.sal7ha.Fragment.main.user.scaning.QrFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/small_margin"
+            android:text="@string/pleasedeletetheworkercodeforsafety"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/medum_text_size" />
+
+
+        <fragment
+            android:id="@+id/barcode_scanner"
+            android:name="info.androidhive.barcode.BarcodeReader"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_gravity="center"
+            app:auto_focus="true"
+            app:line_color="#7323DC"
+            app:line_speed="6"
+            app:line_width="4"
+            app:use_flash="false" />
+    </LinearLayout>
+</layout>

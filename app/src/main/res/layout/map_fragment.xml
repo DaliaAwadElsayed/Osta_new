@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Fragment.maps.MapFragment">
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".Activity.MapsActivity" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/very_small_margin"
+            android:layout_marginTop="@dimen/very_small_margin"
+            android:layout_marginEnd="@dimen/very_small_margin"
+            android:background="@drawable/customborder"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="@dimen/very_small_margin"
+                android:text="@string/bdate"
+                android:textColor="@color/basicColor"
+                android:textSize="@dimen/small_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/addressMapDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/very_small_margin"
+                android:backgroundTint="@color/basicColor"
+                android:gravity="center"
+                android:padding="@dimen/very_small_margin"
+                android:textColor="@color/basicColor"
+                android:textSize="@dimen/small_text_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/very_small_margin"
+            android:layout_marginEnd="@dimen/very_small_margin"
+            android:background="@drawable/customborder"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/very_small_text_size"
+                android:text="@string/lat"
+                android:textColor="@color/basicColor"
+                android:textSize="@dimen/medum_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/latMapDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:padding="@dimen/very_small_text_size"
+                android:textColor="@color/basicColor"
+                android:textSize="@dimen/medum_text_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/very_small_margin"
+            android:layout_marginEnd="@dimen/very_small_margin"
+            android:layout_marginBottom="@dimen/very_small_margin"
+            android:background="@drawable/customborder"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/very_small_text_size"
+                android:text="@string/longitude"
+                android:textColor="@color/basicColor"
+                android:textSize="@dimen/medum_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/langMapDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/small_margin"
+                android:padding="@dimen/very_small_text_size"
+                android:textColor="@color/basicColor"
+                android:textSize="@dimen/medum_text_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/locationMapDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/very_small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/very_small_margin"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:alpha="0.9"
+            android:background="@color/basicColor"
+            android:gravity="center"
+            android:text="@string/locationdone"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/small_text_size"
+            app:cornerRadius="@dimen/medium_margin" />
+
+    </RelativeLayout>
+</layout>

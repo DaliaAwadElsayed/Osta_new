@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1094259072728",
+    "firebase_url": "https://osta-3d244.firebaseio.com",
+    "project_id": "osta-3d244",
+    "storage_bucket": "osta-3d244.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094259072728:android:a8a45b36f322d4049041ad",
+        "android_client_info": {
+          "package_name": "com.dtag.osta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094259072728-uptnbo3u9ogatofs78709hiimis8ulhq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dtag.osta",
+            "certificate_hash": "1de13e0d4fe72e1086a582a7d81e13b915f82a5b"
+          }
+        },
+        {
+          "client_id": "1094259072728-b3jlg54a0cbqf9nd3usq7pgggscutdqe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB85Fbb550v9n68TB1vCshxRVCgl9VJPws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094259072728-2124s3r6mlqevbt921pp19ttd7e8bmlk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1094259072728-cl0ai8rvqpn3le77frlo7iebnlrouutq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dtag.ostaApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

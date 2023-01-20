@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_marginTop="@dimen/_32sdp"
+            android:layout_weight="2"
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:src="@drawable/samoola" />
+        <TextView
+            android:textSize="@dimen/_18sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:textColor="@color/grey"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="@string/samoola_wlc_screen"
+            />
+       </LinearLayout>
+</layout>
