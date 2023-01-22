@@ -30,6 +30,12 @@ public class SalesViewModel extends ViewModel {
         salesFragmentBinding.backId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.notificationFragment);
+            }
+        });
+        salesFragmentBinding.backId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Navigation.findNavController(v).navigate(R.id.offersFragment);
             }
         });

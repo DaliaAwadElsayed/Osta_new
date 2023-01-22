@@ -10,8 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.dtag.osta.Activity.MainActivity;
-import com.dtag.osta.Fragment.ViewModel.main.agent.WorkerChartViewModel;import com.dtag.osta.databinding.WorkerChartFragmentBinding;
+import com.dtag.osta.Fragment.ViewModel.main.agent.WorkerChartViewModel;
+import com.dtag.osta.databinding.WorkerChartFragmentBinding;
 
 
 public class WorkerChartFragment extends Fragment {
@@ -33,8 +33,6 @@ public class WorkerChartFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).openDrawer();
-
         mViewModel = ViewModelProviders.of(this).get(WorkerChartViewModel.class);
         if (getArguments() != null) {
             mViewModel.Init(workerChartFragmentBinding, getContext(), getArguments().getInt("order_id"), getArguments().getBoolean("isNotification", false));

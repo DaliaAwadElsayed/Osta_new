@@ -46,13 +46,13 @@ public class ProfileFragment extends Fragment implements BSImagePicker.OnSingleI
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).openDrawer();
 
         mViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
        if(!Sal7haSharedPreference.isLoggedIn(getContext())){
            
        }
         if (Sal7haSharedPreference.getRole(getContext()).equals("user")) {
+            ((MainActivity) getActivity()).showBottomMenu();
             mViewModel.Init(profileFragmentBinding, getContext(), "user");
         } else {
             mViewModel.Init(profileFragmentBinding, getContext(), "agent");

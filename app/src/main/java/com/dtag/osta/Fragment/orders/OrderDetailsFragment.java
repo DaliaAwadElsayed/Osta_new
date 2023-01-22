@@ -34,7 +34,7 @@ public class OrderDetailsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(OrderDetailsViewModel.class);
-        ((MainActivity) getActivity()).openDrawer();
+        ((MainActivity) getActivity()).showBottomMenu();
         mViewModel.Init(orderDetailsFragmentBinding, getContext(),getArguments().getInt("order_id"),getArguments().getBoolean("isNotification",false),getArguments().getString("body"));
     }
 

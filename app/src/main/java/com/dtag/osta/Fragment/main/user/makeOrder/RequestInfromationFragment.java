@@ -60,7 +60,7 @@ public class RequestInfromationFragment extends Fragment implements TimePickerFr
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).openDrawer();
+        ((MainActivity) getActivity()).showBottomMenu();
 
         if (Sal7haSharedPreference.isLoggedIn(getContext())) {
             if (Sal7haSharedPreference.getRole(getContext()).equals("agent")) {

@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <ImageView
-
+android:tint="@color/basicColor"
         android:id="@+id/imagedialog"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_100sdp"

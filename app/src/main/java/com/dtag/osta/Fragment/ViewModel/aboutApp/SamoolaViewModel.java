@@ -1,4 +1,4 @@
-package com.dtag.osta.Fragment.aboutApp;
+package com.dtag.osta.Fragment.ViewModel.aboutApp;
 
 
 import android.content.Context;
@@ -31,7 +31,7 @@ public class SamoolaViewModel extends ViewModel {
             handler.post(() -> {
                 Log.i("lang", Sal7haSharedPreference.getSelectedLanguageId(samoolaFragmentBinding.getRoot().getContext()));
                 if (!Sal7haSharedPreference.getSelectedLanguageId(samoolaFragmentBinding.getRoot().getContext()).isEmpty()) {
-                    Navigation.findNavController(samoolaFragmentBinding.getRoot()).navigate(R.id.offersFragment);
+                    Navigation.findNavController(samoolaFragmentBinding.getRoot()).navigate(R.id.signinfragment);
                 } else {
                     Navigation.findNavController(samoolaFragmentBinding.getRoot()).navigate(R.id.chooseLangFragment);
                 }

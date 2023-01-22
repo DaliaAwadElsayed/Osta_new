@@ -29,9 +29,9 @@
     <string name="requests">Requests</string>
     <string name="helpandsupport">Help and Support</string>
     <string name="aboutapp">About Samoola</string>
-    <string name="setting">Setting</string>
+    <string name="setting">Change Language</string>
     <string name="internetconnection">No Internet Connection</string>
-    <string name="points">Points Number</string>
+    <string name="points">Points Redeem</string>
     <string name="credit">Points Value</string>
     <string name="logout">Log out</string>
     <string name="login">Log in</string>
@@ -49,7 +49,7 @@
     <string name="policy">Policy</string>
     <string name="shareopinion">Share your review!</string>
     <string name="welcometosupport">Welcome to support.How can we serve you?</string>
-    <string name="support">"Support "</string>
+    <string name="support">"Supporting "</string>
     <string name="whatsapp">WhatsApp</string>
     <string name="twitter">Twitter</string>
     <string name="phoneoremail">Phone Number/Email</string>
@@ -131,7 +131,7 @@
     <string name="choose">Choose</string>
     <string name="cameraaccessdenied">Camera access denied</string>
     <string name="accesstomemoryusagedenied">Access to memory usage denied</string>
-    <string name="noresults">No results</string>
+    <string name="noresults">There is no Data</string>
     <string name="no_orders">No Orders yet</string>
     <string name="verifythetechnicalidentity"><u>Verify the technical identity</u>.</string>
     <string name="pleasedeletetheworkercodeforsafety">Please scan the worker code for safety</string>
@@ -288,11 +288,13 @@
     <string name="each_floor">The Number Of Apartments On Each Floor</string>
     <string name="survey">Description of the required survey</string>
     <string name="preview_price">Preview price</string>
-    <string name="samoola_wlc_screen">Mr. Samoola is ready to serve you</string>
+    <string name="samoola_wlc_screen">Mr. Samoola is ready to serve you...</string>
     <string name="server_client_id">1094259072728-uptnbo3u9ogatofs78709hiimis8ulhq.apps.googleusercontent.com</string>
     <string name="facebook_app_id">503181565269665</string>
     <string name="fb_login_protocol_scheme">fb503181565269665</string>
     <string name="facebook_client_token">cf57a37ab697a53030144c6ea3ed5bf0</string>
     <string name="home">Home</string>
     <string name="more">More</string>
+    <string name="preview_reports">Preview Reports</string>
+    <string name="electronic_value">The electronic wallet is</string>
 </resources>

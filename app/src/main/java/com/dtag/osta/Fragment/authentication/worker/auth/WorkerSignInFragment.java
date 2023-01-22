@@ -18,7 +18,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.dtag.osta.Activity.MainActivity;
 import com.dtag.osta.Fragment.ViewModel.authentication.worker.auth.WorkerSignInViewModel;
 import com.dtag.osta.R;
 import com.dtag.osta.databinding.ForgetPasswordDialogBinding;
@@ -59,7 +58,6 @@ public class WorkerSignInFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).openDrawer();
         workerSignInFragmentBinding.forgetpassword.setOnClickListener(view -> {
             showDialogConfirmation(getContext());
         });

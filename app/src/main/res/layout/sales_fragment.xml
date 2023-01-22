@@ -14,26 +14,46 @@
             android:id="@+id/toolBarId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
             android:elevation="4dp"
             android:minHeight="?attr/actionBarSize"
             app:titleTextColor="@color/black">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="center"
-                android:text="@string/offers"
-                android:textColor="@color/whiteColor"
-                android:textSize="@dimen/_18sdp"
-                android:textStyle="bold" />
+                android:layout_gravity="center">
 
-            <ImageView
-                android:id="@+id/backId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_keyboard_backspace_24" />
+                <ImageView
+                    android:id="@+id/backId"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:src="@drawable/ic_baseline_notifications_24" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="@drawable/border_white_rounded_more"
+                    android:backgroundTint="@color/quantum_grey300"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawableTint="@color/quantum_grey500"
+                    android:padding="@dimen/_6sdp"
+                    android:hint="@string/samoola_wlc_screen"
+
+                    />
+
+                <ImageView
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:src="@drawable/samoola" />
+
+            </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -70,9 +90,10 @@
                     android:layout_marginTop="@dimen/small_margin"
                     android:orientation="vertical"
                     android:padding="@dimen/very_small_margin"
+                    android:layout_marginBottom="@dimen/_40sdp"
                     android:scrollbars="vertical"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="2"
+                    app:spanCount="3"
                     tools:listitem="@layout/sale_item" />
 
 

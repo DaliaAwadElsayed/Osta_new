@@ -31,7 +31,7 @@ public class SignInPhoneNumberFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity)getActivity()).openDrawer();
+        ((MainActivity)getActivity()).hideBottomMenu();
 
         mViewModel = ViewModelProviders.of(this).get(SignInPhoneNumberViewModel.class);
         mViewModel.Init(signInPhoneNumberFragmentBinding, getContext());

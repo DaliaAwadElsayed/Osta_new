@@ -19,13 +19,13 @@
             app:titleTextColor="@color/black">
 
             <LinearLayout
-                android:layout_marginTop="@dimen/_6sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_6sdp">
 
                 <ImageView
-                    android:id="@+id/backId"
+                    android:id="@+id/notificationId"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"
@@ -33,19 +33,19 @@
                     android:src="@drawable/ic_baseline_notifications_24" />
 
                 <EditText
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_8sdp"
+                    android:alpha="0.7"
                     android:background="@drawable/border_white_rounded_more"
-                    android:backgroundTint="@color/quantum_grey300"
+                    android:backgroundTint="@color/quantum_grey200"
                     android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="@dimen/_8sdp"
                     android:drawableTint="@color/quantum_grey500"
-                    android:padding="@dimen/_6sdp"
                     android:hint="@string/samoola_wlc_screen"
-
-                    />
+                    android:padding="@dimen/_6sdp"
+                    android:textColorHint="@color/quantum_grey500" />
 
                 <ImageView
                     android:layout_width="@dimen/_30sdp"
@@ -78,11 +78,12 @@
                     android:id="@+id/home_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/_40sdp"
                     android:orientation="vertical"
                     android:padding="@dimen/very_small_margin"
                     android:scrollbars="vertical"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="2"
+                    app:spanCount="3"
                     tools:listitem="@layout/offer_item" />
 
                 <TextView

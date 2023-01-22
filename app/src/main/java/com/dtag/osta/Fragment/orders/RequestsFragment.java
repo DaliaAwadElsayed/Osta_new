@@ -32,7 +32,7 @@ public class RequestsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity)getActivity()).openDrawer();
+        ((MainActivity)getActivity()).showBottomMenu();
 
         mViewModel = new ViewModelProvider(this).get(RequestsViewModel.class);
         mViewModel.Init(requestsFragmentBinding, getContext());

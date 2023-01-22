@@ -71,7 +71,19 @@ public class Registeration {
     @SerializedName("credits")
     @Expose
     private Integer credits;
+    @SerializedName("total_wallet")
+    @Expose
+    private double total_wallet;
+
     public Registeration() {
+    }
+
+    public double getTotal_wallet() {
+        return total_wallet;
+    }
+
+    public void setTotal_wallet(double total_wallet) {
+        this.total_wallet = total_wallet;
     }
 
     public Integer getPoints() {

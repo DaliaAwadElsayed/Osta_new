@@ -32,7 +32,7 @@ public class SalesFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).openDrawer();
+        ((MainActivity) getActivity()).showBottomMenu();
         mViewModel = ViewModelProviders.of(this).get(SalesViewModel.class);
         mViewModel.Init(salesFragmentBinding, getContext());
     }

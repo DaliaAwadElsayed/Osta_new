@@ -11,28 +11,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_40sdp"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/medium_margin"
             tools:context=".Fragment.RequestInfromationFragment">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolBarId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
                 android:elevation="4dp"
                 android:minHeight="?attr/actionBarSize"
                 app:titleTextColor="@color/black">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="center"
-                    android:text="@string/order_information"
-                    android:textColor="@color/whiteColor"
-                    android:textSize="@dimen/_18sdp"
-                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/backId"
@@ -52,14 +41,11 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/urw_geometric_arabic_regular"
-                    android:gravity="center"
-                    android:padding="@dimen/very_small_margin"
+                    android:padding="@dimen/_5sdp"
                     android:text="@string/servicetype"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/small_text_size"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -307,7 +293,6 @@
                             android:id="@+id/lang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/small_margin"
                             android:fontFamily="@font/urw_geometric_arabic_regular"
                             android:padding="@dimen/very_small_text_size"
                             android:text="@string/longitude"
@@ -324,18 +309,64 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/pointId"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
-                android:fontFamily="@font/urw_geometric_arabic_regular"
-                android:padding="@dimen/very_small_text_size"
-                android:text="@string/points"
-                android:textColor="@color/black"
-                android:textSize="@dimen/medum_text_size"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/pointId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                           android:fontFamily="@font/urw_geometric_arabic_regular"
+                        android:padding="@dimen/very_small_text_size"
+                        android:text="@string/points"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medum_text_size"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/gray_border" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="@dimen/_8sdp"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/creditId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                          android:fontFamily="@font/urw_geometric_arabic_regular"
+                        android:padding="@dimen/very_small_text_size"
+                        android:text="@string/credit"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/medum_text_size"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/gray_border" />
+
+                </LinearLayout>
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -425,11 +456,11 @@
                     android:id="@+id/copounid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:backgroundTint="@color/whiteColor"
                     android:fontFamily="@font/urw_geometric_arabic_regular"
                     android:gravity="center"
-                    android:layout_gravity="center"
                     android:hint="@string/discountcode"
                     android:textAllCaps="false"
                     android:textColor="@color/grey"

@@ -32,7 +32,7 @@ public class WorkerScaningQrResultFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).openDrawer();
+        ((MainActivity) getActivity()).showBottomMenu();
 
         mViewModel = ViewModelProviders.of(this).get(WorkerScaningQrResultViewModel.class);
 mViewModel.Init(workerScaningQrResultFragmentBinding,getContext(),getArguments().getString("agentName"),getArguments().getString("agentPhone"),getArguments().getString("agentCategory"),getArguments().getString("agentImage"),getArguments().getInt("order_id_result"));

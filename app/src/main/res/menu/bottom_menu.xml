@@ -21,7 +21,7 @@
         android:iconTint="@color/basicColor"
         android:title="@string/profile" />
     <item
-        android:id="@+id/moreId"
+        android:id="@+id/moreFragment"
         android:icon="@drawable/ic_more"
         android:iconTint="@color/basicColor"
         android:title="@string/more" />

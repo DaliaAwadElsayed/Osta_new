@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.dtag.osta.Activity.MainActivity;
 import com.dtag.osta.R;
 
 public class CodeResetPasswordFragment extends Fragment {
@@ -30,7 +31,7 @@ public class CodeResetPasswordFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(CodeResetPasswordViewModel.class);
-        // TODO: Use the ViewModel
+        ((MainActivity) getActivity()).hideBottomMenu();
     }
 
 }

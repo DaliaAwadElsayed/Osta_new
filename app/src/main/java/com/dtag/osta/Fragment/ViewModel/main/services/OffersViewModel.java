@@ -5,9 +5,11 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.lifecycle.ViewModel;
+import androidx.navigation.Navigation;
 
 import com.dtag.osta.Adapter.ServiceAdapter;
-import com.dtag.osta.R;import com.dtag.osta.databinding.OffersFragmentBinding;
+import com.dtag.osta.R;
+import com.dtag.osta.databinding.OffersFragmentBinding;
 import com.dtag.osta.network.Interface.Api;
 import com.dtag.osta.network.ResponseModel.wrapper.ApiResponse;
 import com.dtag.osta.network.ResponseModel.wrapper.RetrofitClient;
@@ -23,11 +25,17 @@ public class OffersViewModel extends ViewModel {
     private ServiceAdapter serviceAdapter;
     Context context;
 
-    public void Init(OffersFragmentBinding offersFragmentBinding,Context context) {
-     this.context=context;
+    public void Init(OffersFragmentBinding offersFragmentBinding, Context context) {
+        this.context = context;
         serviceAdapter = new ServiceAdapter(context);
         offersFragmentBinding.homeRecyclerView.setAdapter(serviceAdapter);
         offersFragmentBinding.progress.setVisibility(View.VISIBLE);
+        offersFragmentBinding.notificationId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.notificationFragment);
+            }
+        });
         apiInterface.serviceCategories().enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {

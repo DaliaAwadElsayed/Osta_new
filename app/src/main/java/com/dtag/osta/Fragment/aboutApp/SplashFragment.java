@@ -37,7 +37,8 @@ public class SplashFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).lockDrawer();
+        ((MainActivity) getActivity()).hideBottomMenu();
+
         Utility.deleteCache(getContext());
         mViewModel = ViewModelProviders.of(this).get(SplashViewModel.class);
         mViewModel.Init(splashFragmentBinding, getContext());

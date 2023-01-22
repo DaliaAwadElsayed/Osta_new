@@ -31,7 +31,7 @@ public class SupportFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).openDrawer();
+        ((MainActivity) getActivity()).showBottomMenu();
         mViewModel = ViewModelProviders.of(this).get(SupportViewModel.class);
         mViewModel.Init(supportFragmentBinding,getContext());
     }

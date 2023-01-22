@@ -4,19 +4,15 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.Typeface;
-import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,10 +59,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -108,29 +101,6 @@ public class MainActivity extends AppCompatActivity implements
 //    }
 
     ActivityMainBinding activityMainBinding;
-    private DrawerLayout.DrawerListener drawerListener = new DrawerLayout.DrawerListener() {
-        @Override
-        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
-            activityMainBinding.mainContainer.setTranslationX(Sal7haSharedPreference.getSelectedLanguage(MainActivity.this)
-                    == 0 ? (activityMainBinding.homeDrawer.getWidth() * slideOffset) : (-activityMainBinding.homeDrawer.getWidth() * slideOffset));
-            activityMainBinding.mainContainer.setScaleX(1 - (slideOffset / 6));
-            activityMainBinding.mainContainer.setScaleY(1 - (slideOffset / 6));
-        }
-
-        @Override
-        public void onDrawerOpened(@NonNull View drawerView) {
-        }
-
-        @Override
-        public void onDrawerClosed(@NonNull View drawerView) {
-
-        }
-
-        @Override
-        public void onDrawerStateChanged(int newState) {
-
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,10 +110,10 @@ public class MainActivity extends AppCompatActivity implements
         navController = Navigation.findNavController(this, R.id.home_nav_fragment);
         activityMainBinding.homeNavigationView.setItemIconTintList(null);
         NavigationUI.setupWithNavController(activityMainBinding.homeNavigationView, navController);
-        activityMainBinding.homeDrawer.addDrawerListener(drawerListener);
+        NavigationUI.setupWithNavController(activityMainBinding.bottomNav, navController);
+        activityMainBinding.homeDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        bottomMenu();
         appSetting();
-        NavigationView navigationView = findViewById(R.id.home_navigation_view);
-//        ImageView setting = navigationView.getHeaderView(0).findViewById(R.id.settingId);
         //facebook
         printHashKey();
         FacebookSdk.sdkInitialize(MainActivity.this);
@@ -158,18 +128,6 @@ public class MainActivity extends AppCompatActivity implements
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
 
-        activityMainBinding.homeNavigationView.getMenu().findItem(R.id.settingFragment).setOnMenuItemClickListener(menuItem -> {
-            navController.navigate(R.id.settingFragment);
-            activityMainBinding.homeDrawer.closeDrawers();
-            return false;
-        });
-        activityMainBinding.homeNavigationView.getMenu().findItem(R.id.signinfragmentt).setOnMenuItemClickListener(menuItem -> {
-            if (Sal7haSharedPreference.isLoggedIn(MainActivity.this)) {
-                activityMainBinding.homeDrawer.closeDrawers();
-                navController.navigate(R.id.profileFragment);
-            }
-            return false;
-        });
 //TODO i commented firebase as has errors
         FirebaseMessaging.getInstance().subscribeToTopic("weather")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -228,21 +186,77 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+    private void bottomMenu() {
+        activityMainBinding.bottomNav.getMenu().findItem(R.id.offersFragment).setIcon(R.drawable.ic_select_home);
+        activityMainBinding.bottomNav.getMenu().findItem(R.id.offersFragment).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                navController.navigate(R.id.offersFragment);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.offersFragment).setIcon(R.drawable.ic_select_home);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.salesFragment).setIcon(R.drawable.ic_offer);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.requestsFragment).setIcon(R.drawable.ic_requests);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.profileFragment).setIcon(R.drawable.ic_profile);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.moreFragment).setIcon(R.drawable.ic_more);
+                return true;
+            }
+        });
+        activityMainBinding.bottomNav.getMenu().findItem(R.id.salesFragment).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                navController.navigate(R.id.salesFragment);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.offersFragment).setIcon(R.drawable.ic_home);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.salesFragment).setIcon(R.drawable.ic_select_offer);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.requestsFragment).setIcon(R.drawable.ic_requests);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.profileFragment).setIcon(R.drawable.ic_profile);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.moreFragment).setIcon(R.drawable.ic_more);
+                return true;
+            }
+        });
+        activityMainBinding.bottomNav.getMenu().findItem(R.id.requestsFragment).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                navController.navigate(R.id.requestsFragment);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.offersFragment).setIcon(R.drawable.ic_home);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.salesFragment).setIcon(R.drawable.ic_offer);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.requestsFragment).setIcon(R.drawable.ic_select_requests);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.profileFragment).setIcon(R.drawable.ic_profile);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.moreFragment).setIcon(R.drawable.ic_more);
+                return true;
+            }
+        });
+        activityMainBinding.bottomNav.getMenu().findItem(R.id.profileFragment).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                navController.navigate(R.id.profileFragment);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.offersFragment).setIcon(R.drawable.ic_home);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.salesFragment).setIcon(R.drawable.ic_offer);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.requestsFragment).setIcon(R.drawable.ic_requests);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.profileFragment).setIcon(R.drawable.ic_select_profile);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.moreFragment).setIcon(R.drawable.ic_more);
+                return true;
+            }
+        });
+        activityMainBinding.bottomNav.getMenu().findItem(R.id.moreFragment).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                navController.navigate(R.id.moreFragment);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.offersFragment).setIcon(R.drawable.ic_home);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.salesFragment).setIcon(R.drawable.ic_offer);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.requestsFragment).setIcon(R.drawable.ic_requests);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.profileFragment).setIcon(R.drawable.ic_profile);
+                activityMainBinding.bottomNav.getMenu().findItem(R.id.moreFragment).setIcon(R.drawable.ic_select_more);
+                return true;
+            }
+        });
 
-    public void lockDrawer() {
-        activityMainBinding.homeDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-    }
-
-    public void openDrawer() {
-        activityMainBinding.homeDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 
     public void showBottomMenu() {
-        activityMainBinding.bottomId.setVisibility(View.VISIBLE);
+        activityMainBinding.bottomNav.setVisibility(View.VISIBLE);
     }
 
     public void hideBottomMenu() {
-        activityMainBinding.bottomId.setVisibility(View.GONE);
+        activityMainBinding.bottomNav.setVisibility(View.GONE);
     }
 
     @Override
@@ -299,144 +313,15 @@ public class MainActivity extends AppCompatActivity implements
         Toast.makeText(this, R.string.donesuccessfully, Toast.LENGTH_SHORT).show();
     }
 
-    private void userProfile() {
-        activityMainBinding.homeNavigationView.getMenu().findItem(R.id.workerChartFragment).setVisible(false);
-        NavigationView navigationView = findViewById(R.id.home_navigation_view);
-        LinearLayout linearLayout = navigationView.getHeaderView(0).findViewById(R.id.creditlinearHeader);
-        linearLayout.setVisibility(View.VISIBLE);
-        RatingBar ratingBar = navigationView.getHeaderView(0).findViewById(R.id.ratingHeader);
-        ratingBar.setVisibility(View.GONE);
-        ImageView imageView = navigationView.getHeaderView(0).findViewById(R.id.profile_image);
-        apiInterface.getCustomerProfile(Sal7haSharedPreference.getToken(this)).enqueue(new Callback<ApiResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
-                if (response.body() != null && response.isSuccessful()) {
-                    if (response.body().getStatus()) {
-                        TextView name, credit, pointsText;
-                        name = findViewById(R.id.nameHeader);
-                        credit = findViewById(R.id.creditHeader);
-                        pointsText = findViewById(R.id.pointHeader);
-                        String basicName = response.body().getData().getUser().getName();
-                        Integer points = response.body().getData().getUser().getPoints();
-                        Integer credits = response.body().getData().getUser().getCredits();
-                        name.setText(Utility.fixNullString(basicName));
-                        pointsText.setText("" + points);
-                        credit.setText("" + credits);
-                        Picasso.get().load(RetrofitClient.BASE_URL + '/' + response.body().getData().getUser().getImage()).error(R.drawable.ic_account).placeholder(R.drawable.ic_account)
-                                .into(imageView);
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-
-            }
-        });
-    }
-
-
-    private void agentProfile() {
-        activityMainBinding.homeNavigationView.getMenu().findItem(R.id.workerChartFragment).setVisible(true);
-        NavigationView navigationView = findViewById(R.id.home_navigation_view);
-        LinearLayout linearLayout = navigationView.getHeaderView(0).findViewById(R.id.creditlinearHeader);
-        linearLayout.setVisibility(View.GONE);
-        ImageView imageView = navigationView.getHeaderView(0).findViewById(R.id.profile_image);
-        RatingBar ratingBar = navigationView.getHeaderView(0).findViewById(R.id.ratingHeader);
-        ratingBar.setVisibility(View.VISIBLE);
-        apiInterface.getAgentProfile(Sal7haSharedPreference.getToken(this)).enqueue(new Callback<ApiResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
-                if (response.body() != null && response.isSuccessful()) {
-                    if (response.body().getStatus()) {
-                        TextView name;
-                        name = findViewById(R.id.nameHeader);
-                        String basicName = response.body().getData().getAgent().getName();
-                        name.setText(Utility.fixNullString(basicName));
-                        LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
-                        stars.getDrawable(1).setColorFilter(getResources().getColor(R.color.whiteColor), PorterDuff.Mode.SRC_ATOP);
-                        stars.getDrawable(2).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
-                        stars.getDrawable(0).setColorFilter(getResources().getColor(R.color.whiteColor), PorterDuff.Mode.SRC_ATOP);
-                        ratingBar.setRating(response.body().getData().getAgent().getRate());
-                        Picasso.get().load(RetrofitClient.BASE_URL + '/' + response.body().getData().getAgent().getImage()).error(R.drawable.ic_account).placeholder(R.drawable.ic_account)
-                                .into(imageView);
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-
-            }
-        });
-    }
-
-    private void noLogin() {
-        activityMainBinding.homeNavigationView.getMenu().findItem(R.id.requestsFragment).setVisible(false);
-        activityMainBinding.homeNavigationView.getMenu().findItem(R.id.workerChartFragment).setVisible(false);
-        activityMainBinding.homeNavigationView.getMenu().findItem(R.id.signinfragmentt).setVisible(false);
-        activityMainBinding.logoutTv.setText(R.string.login);
-        NavigationView navigationView = findViewById(R.id.home_navigation_view);
-//        ImageView logoutImage = navigationView.getHeaderView(0).findViewById(R.id.logoutId);
-
-        activityMainBinding.logoutTv.setOnClickListener(v -> {
-            navController.navigate(R.id.signinfragment);
-            activityMainBinding.homeDrawer.closeDrawers();
-        });
-        checkLog = false;
-        ImageView imageView = navigationView.getHeaderView(0).findViewById(R.id.profile_image);
-        imageView.setImageResource(R.drawable.logo);
-        TextView name;
-        LinearLayout linearLayout = navigationView.getHeaderView(0).findViewById(R.id.creditlinearHeader);
-        linearLayout.setVisibility(View.GONE);
-        RatingBar ratingBar = navigationView.getHeaderView(0).findViewById(R.id.ratingHeader);
-        ratingBar.setVisibility(View.GONE);
-        name = navigationView.getHeaderView(0).findViewById(R.id.nameHeader);
-        name.setText(R.string.sal7ha);
-    }
 
     private void appSetting() {
         if (Sal7haSharedPreference.isLoggedIn(this)) {
             if (Sal7haSharedPreference.getRole(this).equals("user")) {
-                userProfile();
-            } else if (Sal7haSharedPreference.getRole(this).equals("agent")) {
-                agentProfile();
+                navController.navigate(R.id.offersFragment);
+            } else {
+                //TODO AGENT FRAGMENT
             }
-            activityMainBinding.homeNavigationView.getMenu().findItem(R.id.requestsFragment).setVisible(true);
-            activityMainBinding.homeNavigationView.getMenu().findItem(R.id.signinfragmentt).setVisible(true);
-            activityMainBinding.logoutTv.setText(R.string.logout);
-//            NavigationView navigationView = findViewById(R.id.home_navigation_view);
-//            ImageView logoutImage = navigationView.getHeaderView(0).findViewById(R.id.logoutId);
-            activityMainBinding.logoutTv.setOnClickListener(v -> {
-                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(MainActivity.this);
-                builder.setTitle(R.string.app_name);
-                builder.setIcon(R.drawable.logo);
-                builder.setMessage(R.string.logoutQuestion)
-                        .setCancelable(false)
-
-                        .setPositiveButton(R.string.yes, (dialog, id) -> {
-                            Sal7haSharedPreference.clearSharedPreference(MainActivity.this);
-                            Log.i(TAG, "TOKEN" + Sal7haSharedPreference.getToken(this));
-                            navController.navigate(R.id.offersFragment);
-                            activityMainBinding.homeDrawer.closeDrawers();
-                            //    resetApp();
-//                            finish();
-//                            Intent intent = new Intent(MainActivity.this, MainActivity.class);
-//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-//                                intent.addFlags(0x8000); // equal to Intent.FLAG_ACTIVITY_CLEAR_TASK which is only available from API level 11
-//                            this.startActivity(intent);
-                            // Toast.makeText(this, "bye", Toast.LENGTH_SHORT).show();
-                            //
-                        })
-                        .setNeutralButton(R.string.no, (dialog, id) -> dialog.cancel())
-                        .show();
-            });
             checkLog = true;
-        } else {
-            noLogin();
-
         }
     }
 

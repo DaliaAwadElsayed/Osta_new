@@ -247,4 +247,18 @@
         android:id="@+id/chooseLangFragment"
         app:destination="@id/chooseLangFragment"
         ></action></fragment>
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="com.dtag.osta.Fragment.aboutApp.MoreFragment"
+        android:label="more_fragment"
+        tools:layout="@layout/more_fragment" />
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.dtag.osta.Fragment.aboutApp.ReportFragment"
+        android:label="report_fragment"
+        tools:layout="@layout/report_fragment" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.dtag.osta.Fragment.aboutApp.NotificationFragment"
+        android:label="NotificationFragment" />
 </navigation>

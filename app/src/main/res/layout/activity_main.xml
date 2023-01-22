@@ -7,13 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bottomId"
-            android:layout_gravity="bottom"
-            android:backgroundTint="@color/whiteColor"
-            app:menu="@menu/bottom_menu" />
+
 
         <androidx.drawerlayout.widget.DrawerLayout
             android:id="@+id/home_drawer"
@@ -35,6 +29,15 @@
                     app:defaultNavHost="true"
                     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
                     app:navGraph="@navigation/home_nav_graph" />
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bottomNav"
+                    android:textSize="@dimen/_4sdp"
+                    app:layout_anchorGravity="bottom"
+                    android:layout_gravity="bottom"
+                    android:backgroundTint="@color/whiteColor"
+                    app:menu="@menu/bottom_menu" />
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
             <com.google.android.material.navigation.NavigationView
@@ -44,9 +47,8 @@
                 android:layout_gravity="start"
                 android:background="@color/colorPrimaryDark"
                 android:fitsSystemWindows="true"
-                app:headerLayout="@layout/nav_header"
                 app:itemTextColor="@color/whiteColor"
-                app:menu="@menu/home_nav_menu">
+               >
                 <!--                <ImageView-->
                 <!--                    android:id="@+id/logoutId"-->
                 <!--                    android:layout_width="@dimen/_25sdp"-->

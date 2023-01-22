@@ -59,7 +59,7 @@ public class SignInFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).openDrawer();
+        ((MainActivity) getActivity()).hideBottomMenu();
 
         signInFragmentBinding.forgetpassword.setOnClickListener(view -> {
             showDialogConfirmation(getContext());

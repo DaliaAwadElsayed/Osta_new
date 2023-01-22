@@ -57,7 +57,7 @@ public class QrFragment extends Fragment implements BarcodeReader.BarcodeReaderL
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).openDrawer();
+        ((MainActivity) getActivity()).hideBottomMenu();
 
         barcodeReader = (BarcodeReader) getChildFragmentManager().findFragmentById(R.id.barcode_scanner);
         barcodeReader.setListener(this);

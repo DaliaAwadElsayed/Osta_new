@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.dtag.osta.Activity.MainActivity;
+import com.dtag.osta.Fragment.ViewModel.aboutApp.SamoolaViewModel;
 import com.dtag.osta.databinding.SamoolaFragmentBinding;
 
 public class SamoolaFragment extends Fragment {
@@ -33,6 +35,8 @@ public class SamoolaFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(SamoolaViewModel.class);
         mViewModel.init(samoolaFragmentBinding, getContext());
+        ((MainActivity) getActivity()).hideBottomMenu();
+
     }
 
 }

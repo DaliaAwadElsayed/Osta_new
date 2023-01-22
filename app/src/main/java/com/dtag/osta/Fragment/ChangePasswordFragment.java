@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.dtag.osta.Activity.MainActivity;
 import com.dtag.osta.databinding.ChangePasswordFragmentBinding;
 
 public class ChangePasswordFragment extends Fragment {
@@ -31,6 +32,7 @@ public class ChangePasswordFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        ((MainActivity) getActivity()).showBottomMenu();
         mViewModel = new ViewModelProvider(this).get(ChangePasswordViewModel.class);
         mViewModel.init(changePasswordFragmentBinding, getContext());
     }

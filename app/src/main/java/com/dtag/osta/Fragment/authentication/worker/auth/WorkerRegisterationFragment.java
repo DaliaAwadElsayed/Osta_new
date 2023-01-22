@@ -121,7 +121,6 @@ public class WorkerRegisterationFragment extends Fragment implements
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).openDrawer();
         mViewModel = ViewModelProviders.of(this).get(WorkerRegisterationViewModel.class);
         mViewModel.Init(workerRegisterationFragmentBinding, getContext());
         ccp = (CountryCodePicker) workerRegisterationFragmentBinding.getRoot().findViewById(R.id.ccp);

@@ -101,7 +101,7 @@ public class RegisterationFragment extends Fragment implements OnInputSelected {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).openDrawer();
+        ((MainActivity) getActivity()).hideBottomMenu();
 
         ccp = (CountryCodePicker) registerationFragmentBinding.getRoot().findViewById(R.id.ccp);
 
