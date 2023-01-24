@@ -26,7 +26,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.dtag.osta.Activity.MainActivity;
@@ -45,7 +45,9 @@ import com.dtag.osta.network.ResponseModel.wrapper.ApiResponse;
 import com.dtag.osta.network.ResponseModel.wrapper.RetrofitClient;
 import com.dtag.osta.network.ResponseModel.wrapper.SetToken;
 import com.dtag.osta.utility.Sal7haSharedPreference;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
 
 import org.jetbrains.annotations.NotNull;
@@ -425,7 +427,7 @@ public class RegisterationFragment extends Fragment implements OnInputSelected {
             }
         });
 
-//        registerationFragmentBinding.informationPasswordId.setOnClickListener(view -> {
+//   /     registerationFragmentBinding.informationPasswordId.setOnClickListener(view -> {
 //            final Dialog dialog = new Dialog(getContext());
 //            dialog.setCancelable(false);
 //            if (dialog != null) {
@@ -446,7 +448,7 @@ public class RegisterationFragment extends Fragment implements OnInputSelected {
             dialog.show(getFragmentManager(), "MyCustomDialog");
         });
         Log.i(TAG, "code : " + getArguments().getString("code"));
-        mViewModel = ViewModelProviders.of(this).get(RegisterationViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(RegisterationViewModel.class);
         mViewModel.Init(registerationFragmentBinding, getContext());
     }
 
@@ -527,9 +529,8 @@ public class RegisterationFragment extends Fragment implements OnInputSelected {
     }
 
     private boolean inputValid() {
-        return firstNameValid() && secondNameValid() && thirdNameValid() && phoneValid() && passwordStrongValid() && confirmPasswordStrongValid() && passwordsIsValid() ;
+        return firstNameValid() && secondNameValid() && thirdNameValid() && phoneValid() && passwordStrongValid() && confirmPasswordStrongValid() && passwordsIsValid();
     }
-
 
 
     private boolean confirmPasswordStrongValid() {
@@ -851,35 +852,36 @@ public class RegisterationFragment extends Fragment implements OnInputSelected {
     }
 
     private void getDeviceToken(String userToken) {
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(task -> {
-                    if (!task.isSuccessful()) {
-                        Log.w(TAG, "getInstanceId failed", task.getException());
-                        return;
-                    }
-                    // Get new Instance ID token
-                    String token = task.getResult().getToken();
-                    Log.i(TAG, "device token" + token);
-                    setToken.setDevice_token(token);
-                    setToken.setType("android");
-                    apiInterface.UserSetToken(userToken, setToken).enqueue(new Callback<ApiResponse>() {
-                        @Override
-                        public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
-                            if (response.body() != null && response.isSuccessful()) {
-                                if (response.body().getStatus()) {
-                                    //  Toast.makeText(context, setToken.getDevice_token(), Toast.LENGTH_SHORT).show();
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        // Get new FCM registration token
+                        String deviceToken = task.getResult();
+                        setToken.setDevice_token(deviceToken);
+                        setToken.setType("android");
+                        apiInterface.UserSetToken(userToken, setToken).enqueue(new Callback<ApiResponse>() {
+                            @Override
+                            public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                                if (response.body() != null && response.isSuccessful()) {
+                                    if (response.body().getStatus()) {
+                                        //  Toast.makeText(context, setToken.getDevice_token(), Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             }
-                        }
 
-                        @Override
-                        public void onFailure(@NotNull Call<ApiResponse> call, @NotNull Throwable t) {
-                            Log.e(TAG, "onFailure: ", t);
-                        }
-                    });
-
-
+                            @Override
+                            public void onFailure(@NotNull Call<ApiResponse> call, @NotNull Throwable t) {
+                                Log.e(TAG, "onFailure: ", t);
+                            }
+                        });
+                    }
                 });
+
     }
 
 }

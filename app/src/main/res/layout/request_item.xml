@@ -242,7 +242,7 @@
                     android:layout_marginTop="@dimen/small_margin"
                     android:layout_marginRight="@dimen/small_margin"
                     android:layout_marginBottom="@dimen/small_margin"
-                    android:drawableTop="@drawable/support"
+                    android:drawableTop="@drawable/ic_support"
                     android:drawableTint="@color/basicColor"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:text="@string/support"

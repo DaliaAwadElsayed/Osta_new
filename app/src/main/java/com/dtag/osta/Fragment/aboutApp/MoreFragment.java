@@ -35,7 +35,7 @@ public class MoreFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(MoreViewModel.class);
         ((MainActivity) getActivity()).showBottomMenu();
-        mViewModel.init(moreFragmentBinding, getContext());
+        mViewModel.init(moreFragmentBinding, getContext(),getActivity());
     }
 
 }

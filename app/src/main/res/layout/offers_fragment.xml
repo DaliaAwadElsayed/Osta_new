@@ -42,7 +42,7 @@
                     android:backgroundTint="@color/quantum_grey200"
                     android:drawableStart="@drawable/ic_search"
                     android:drawablePadding="@dimen/_8sdp"
-                    android:drawableTint="@color/quantum_grey500"
+                    android:drawableTint="#979494"
                     android:hint="@string/samoola_wlc_screen"
                     android:padding="@dimen/_6sdp"
                     android:textColorHint="@color/quantum_grey500" />

@@ -9,9 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProviders;import com.dtag.osta.databinding.OffersFragmentBinding;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.dtag.osta.Activity.MainActivity;
 import com.dtag.osta.Fragment.ViewModel.main.services.OffersViewModel;
+import com.dtag.osta.databinding.OffersFragmentBinding;
 
 public class OffersFragment extends Fragment {
     private FragmentActivity activity;
@@ -33,7 +35,7 @@ public class OffersFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ((MainActivity)getActivity()).showBottomMenu();
-        mViewModel = ViewModelProviders.of(this).get(OffersViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(OffersViewModel.class);
         mViewModel.Init(offersFragmentBinding,getContext());
     }
 

@@ -315,6 +315,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
     private void appSetting() {
+        Log.i("loginstatus", "?" + Sal7haSharedPreference.isLoggedIn(this)+"/"+Sal7haSharedPreference.getRole(this));
         if (Sal7haSharedPreference.isLoggedIn(this)) {
             if (Sal7haSharedPreference.getRole(this).equals("user")) {
                 navController.navigate(R.id.offersFragment);
@@ -340,6 +341,7 @@ public class MainActivity extends AppCompatActivity implements
 
     //socail login
     private void loginWithSocialApi(String loginAs, String name, String email, String phone, String socialId, String socialType) {
+        Log.i("typeeess", loginAs + "/" + name + "/" + email + "/" + phone + "/" + socialId + "/" + socialType);
         apiInterface.socialLogin(loginAs, name, email, phone, socialId, socialType).enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
@@ -385,13 +387,6 @@ public class MainActivity extends AppCompatActivity implements
                                                         if (object.has("email")) {
                                                             Log.i("TOKEEEEEENEMAIL", loginResult.getAccessToken().getToken() + "?");
                                                             String email = object.getString("email");
-//                                                            if (GoldenNoLoginSharedPreference.getUserEmail(MainActivity.this).equals(email)) {
-//                                                                loginWithGoogleApi(loginResult.getAccessToken().getToken(), "facebook", "second", "yes");
-//
-//                                                            } else {
-//                                                                loginWithGoogleApi(loginResult.getAccessToken().getToken(), "facebook", "first", "yes");
-//
-//                                                            }
                                                         } else {
                                                             if (!loginResult.getAccessToken().isDataAccessExpired())
                                                                 Log.i("TOKEEEEEEN", loginResult.getAccessToken().getToken() + "?");
@@ -401,7 +396,8 @@ public class MainActivity extends AppCompatActivity implements
 
                                                         // do action after Facebook login success
                                                         // or call your API
-                                                    } catch (NullPointerException | JSONException e) {
+                                                    } catch
+                                                    (NullPointerException | JSONException e) {
                                                         e.printStackTrace();
                                                         Log.i("FACEBOOKEXCEPTION", e.toString());
                                                     }
@@ -518,11 +514,6 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    public void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-
     public void googleLogOut() {
         LoginManager.getInstance().logOut();
         mGoogleSignInClient.signOut()
@@ -533,4 +524,22 @@ public class MainActivity extends AppCompatActivity implements
                     }
                 });
     }
+
+    public void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    public void languageWlc() {
+        if (!Sal7haSharedPreference.getSelectedLanguageId(MainActivity.this).isEmpty()) {
+            navController.navigate(R.id.signinfragment);
+        } else {
+            navController.navigate(R.id.chooseLangFragment);
+        }
+    }
+
+    public void splash() {
+        navController.navigate(R.id.samoolaFragment);
+    }
+
 }

@@ -12,12 +12,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.dtag.osta.R;import com.dtag.osta.databinding.QrFragmentBinding;
 import com.dtag.osta.Activity.MainActivity;
 import com.dtag.osta.Fragment.ViewModel.main.user.scaning.QrViewModel;
+import com.dtag.osta.R;
+import com.dtag.osta.databinding.QrFragmentBinding;
 import com.dtag.osta.network.Interface.Api;
 import com.dtag.osta.network.ResponseModel.Model.orderList.Order;
 import com.dtag.osta.network.ResponseModel.wrapper.ApiResponse;
@@ -61,7 +62,7 @@ public class QrFragment extends Fragment implements BarcodeReader.BarcodeReaderL
 
         barcodeReader = (BarcodeReader) getChildFragmentManager().findFragmentById(R.id.barcode_scanner);
         barcodeReader.setListener(this);
-        mViewModel = ViewModelProviders.of(this).get(QrViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(QrViewModel.class);
         // TODO: Use the ViewModel
     }
 

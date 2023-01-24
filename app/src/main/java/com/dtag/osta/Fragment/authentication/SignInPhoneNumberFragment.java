@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;import com.dtag.osta.databinding.SignInPhoneNumberFragmentBinding;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.dtag.osta.Activity.MainActivity;
 import com.dtag.osta.Fragment.ViewModel.authentication.SignInPhoneNumberViewModel;
+import com.dtag.osta.databinding.SignInPhoneNumberFragmentBinding;
 
 public class SignInPhoneNumberFragment extends Fragment {
 
@@ -32,8 +34,7 @@ public class SignInPhoneNumberFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ((MainActivity)getActivity()).hideBottomMenu();
-
-        mViewModel = ViewModelProviders.of(this).get(SignInPhoneNumberViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(SignInPhoneNumberViewModel.class);
         mViewModel.Init(signInPhoneNumberFragmentBinding, getContext());
     }
 

@@ -56,6 +56,10 @@ public class Registeration {
     @SerializedName("status")
     @Expose
     private String status;
+    @SerializedName("social_type")
+    @Expose
+    private String social_type;
+
     @SerializedName("area")
     @Expose
     private Area area;
@@ -124,6 +128,14 @@ public class Registeration {
 
     public void setEmailVerifiedAt(Object emailVerifiedAt) {
         this.emailVerifiedAt = emailVerifiedAt;
+    }
+
+    public String getSocial_type() {
+        return social_type;
+    }
+
+    public void setSocial_type(String social_type) {
+        this.social_type = social_type;
     }
 
     public Object getPhoneVerifiedAt() {

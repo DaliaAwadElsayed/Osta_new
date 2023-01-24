@@ -3,13 +3,16 @@ package com.dtag.osta.Fragment.ViewModel.authentication;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.lifecycle.ViewModel;
 import androidx.navigation.Navigation;
 
-import com.dtag.osta.R;import com.dtag.osta.databinding.SignInPhoneNumberFragmentBinding;
+import com.dtag.osta.R;
+import com.dtag.osta.databinding.SignInPhoneNumberFragmentBinding;
 import com.dtag.osta.network.Interface.Api;
 import com.dtag.osta.network.ResponseModel.Model.PhoneNumber;
 import com.dtag.osta.network.ResponseModel.wrapper.ApiResponse;
@@ -30,6 +33,12 @@ public class SignInPhoneNumberViewModel extends ViewModel {
     public void Init(SignInPhoneNumberFragmentBinding signInPhoneNumberFragmentBinding, Context context) {
         this.context = context;
         this.signInPhoneNumberFragmentBinding = signInPhoneNumberFragmentBinding;
+        signInPhoneNumberFragmentBinding.backId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.signinfragment);
+            }
+        });
         signInPhoneNumberFragmentBinding.enter.setOnClickListener(view -> {
             if (phoneNumberValid()) {
                 final Dialog dialog = new Dialog(context);
@@ -49,12 +58,13 @@ public class SignInPhoneNumberViewModel extends ViewModel {
                             if (response.body() != null && response.isSuccessful()) {
                                 if (response.body().getStatus()) {
                                     dialog.dismiss();
-                                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Log.i("CODDDE", response.body().getMessage() + "?");
+//                                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                     Bundle bundle = new Bundle();
                                     bundle.putString("phoneNumber", signInPhoneNumberFragmentBinding.phonenumber.getText().toString());
                                     Navigation.findNavController(view).navigate(R.id.verificationCodeFragment, bundle);
                                 } else {
-dialog.dismiss();
+                                    dialog.dismiss();
                                     String[] myArray = new String[]{response.body().getErrors().getEmail().toString()};
 
                                     StringBuilder builder = new StringBuilder();

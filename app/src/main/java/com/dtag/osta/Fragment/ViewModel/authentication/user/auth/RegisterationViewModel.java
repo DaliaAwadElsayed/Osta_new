@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.lifecycle.ViewModel;
+import androidx.navigation.Navigation;
 
 import com.dtag.osta.R;import com.dtag.osta.databinding.RegisterationFragmentBinding;
 import com.dtag.osta.network.Interface.Api;
@@ -36,6 +37,12 @@ public class RegisterationViewModel extends ViewModel {
         getAreaa();
         this.context = context;
         this.registerationFragmentBinding = registerationFragmentBinding;
+        registerationFragmentBinding.backId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.signinfragment);
+            }
+        });
     }
 
 

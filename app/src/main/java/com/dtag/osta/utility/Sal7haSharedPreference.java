@@ -174,7 +174,7 @@ public class Sal7haSharedPreference {
     }
 
     public static int getSelectedLanguage(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getString(LANG_KEY, "ar").equals("en") ? 0 : 1;
+        return PreferenceManager.getDefaultSharedPreferences(context).getString(LANG_KEY, "").equals("en") ? 0 : 1;
     }
 
     public static String getSelectedLanguageValue(Context context) {

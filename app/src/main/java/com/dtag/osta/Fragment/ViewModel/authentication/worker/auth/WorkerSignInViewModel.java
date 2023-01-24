@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.Constraints;
 import androidx.lifecycle.ViewModel;
 import androidx.navigation.Navigation;
 
@@ -22,15 +23,15 @@ import com.dtag.osta.network.ResponseModel.wrapper.ApiResponse;
 import com.dtag.osta.network.ResponseModel.wrapper.RetrofitClient;
 import com.dtag.osta.network.ResponseModel.wrapper.SetToken;
 import com.dtag.osta.utility.Sal7haSharedPreference;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.jetbrains.annotations.NotNull;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.github.vipulasri.timelineview.TimelineView.TAG;
 
 
 public class WorkerSignInViewModel extends ViewModel {
@@ -132,35 +133,36 @@ public class WorkerSignInViewModel extends ViewModel {
     }
 
     private void getDeviceToken(String userToken) {
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(task -> {
-                    if (!task.isSuccessful()) {
-                        Log.w(TAG, "getInstanceId failed", task.getException());
-                        return;
-                    }
-                    // Get new Instance ID token
-                    String token = task.getResult().getToken();
-                    Log.i(TAG, "device token" + token);
-                    setToken.setDevice_token(token);
-                    setToken.setType("android");
-                    apiInterface.agentSetToken(userToken, setToken).enqueue(new Callback<ApiResponse>() {
-                        @Override
-                        public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
-                            if (response.body() != null && response.isSuccessful()) {
-                                if (response.body().getStatus()) {
-
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        // Get new FCM registration token
+                        String deviceToken = task.getResult();
+                        setToken.setDevice_token(deviceToken);
+                        setToken.setType("android");
+                        apiInterface.UserSetToken(userToken, setToken).enqueue(new Callback<ApiResponse>() {
+                            @Override
+                            public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                                if (response.body() != null && response.isSuccessful()) {
+                                    if (response.body().getStatus()) {
+                                        //  Toast.makeText(context, setToken.getDevice_token(), Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             }
-                        }
 
-                        @Override
-                        public void onFailure(@NotNull Call<ApiResponse> call, @NotNull Throwable t) {
-                            Log.e(TAG, "onFailure: ", t);
-                        }
-                    });
-
-
+                            @Override
+                            public void onFailure(@NotNull Call<ApiResponse> call, @NotNull Throwable t) {
+                                Log.e(Constraints.TAG, "onFailure: ", t);
+                            }
+                        });
+                    }
                 });
+
     }
 
 

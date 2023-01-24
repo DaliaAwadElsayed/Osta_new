@@ -249,9 +249,9 @@ public interface Api {
     //String loginAs, String name,String email,String phone, String socialId, String socialType
     @FormUrlEncoded
     @POST("/api/socialLogin")
-    Call<ApiResponse> socialLogin(@Field("loginAs") String loginAs, @Field("name") String name
+    Call<ApiResponse> socialLogin(@Field("login_as") String loginAs, @Field("name") String name
             , @Field("email") String email  , @Field("phone") String phone  ,
-                                  @Field("socialId") String socialId  , @Field("socialType") String socialType);
+                                  @Field("social_id") String socialId  , @Field("social_type") String socialType);
 
 
 }

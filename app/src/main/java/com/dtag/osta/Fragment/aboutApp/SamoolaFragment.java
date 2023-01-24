@@ -34,7 +34,7 @@ public class SamoolaFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(SamoolaViewModel.class);
-        mViewModel.init(samoolaFragmentBinding, getContext());
+        mViewModel.init(samoolaFragmentBinding, getContext(),getActivity());
         ((MainActivity) getActivity()).hideBottomMenu();
 
     }

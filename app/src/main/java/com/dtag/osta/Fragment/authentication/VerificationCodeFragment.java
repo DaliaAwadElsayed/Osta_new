@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;import com.dtag.osta.databinding.VerificationCodeFragmentBinding;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.dtag.osta.Activity.MainActivity;
 import com.dtag.osta.Fragment.ViewModel.authentication.VerificationCodeViewModel;
+import com.dtag.osta.databinding.VerificationCodeFragmentBinding;
 
 public class VerificationCodeFragment extends Fragment {
 
@@ -38,7 +40,7 @@ public class VerificationCodeFragment extends Fragment {
         ((MainActivity)getActivity()).hideBottomMenu();
 
 
-        mViewModel = ViewModelProviders.of(this).get(VerificationCodeViewModel.class);
+        mViewModel =new ViewModelProvider(this).get(VerificationCodeViewModel.class);
         mViewModel.Init(verificationFragmentBinding,getContext(),getArguments().getString("phoneNumber"));
     }
 }

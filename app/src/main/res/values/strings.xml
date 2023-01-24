@@ -59,7 +59,7 @@
     <string name="refuse">Refuse</string>
     <string name="termsandcondition">Terms and Conditions</string>
     <string name="enterphonenumber">Hello,please Enter your Email for Verification</string>
-    <string name="dearcustomer">Success</string>
+    <string name="dearcustomer">Dear Customer</string>
     <string name="truecode">The code has been successfully verified</string>
     <string name="done">done</string>
     <string name="okay">Ok</string>
@@ -101,7 +101,7 @@
     <string name="pleaseenterphonenumber">Please Enter your Phone Number</string>
     <string name="seconds">Seconds</string>
     <string name="entercode">Please Enter the Code</string>
-    <string name="invalidcodee">Wrong Code.</string>
+    <string name="invalidcodee">Code is wrong, Please try again.</string>
     <string name="currentlocation">Click here to Select your current Location</string>
     <string name="lessthan6letters">Password  Mustn\'t be less than 8 letters</string>
     <string name="entervalidemail">Enter Valid Email</string>
@@ -274,7 +274,7 @@
     <string name="verify">Verify</string>
     <string name="deactive">In Active</string>
     <string name="activec">Active</string>
-    <string name="you_have_problem">You have a Problem? Fix it</string>
+    <string name="you_have_problem">You have a Problem? Mr. Samoola is ready to serve you...</string>
     <string name="resend_code">Resend Code:</string>
     <string name="send_again">Send Again</string>
     <string name="order_information">Order Information</string>
@@ -289,7 +289,7 @@
     <string name="survey">Description of the required survey</string>
     <string name="preview_price">Preview price</string>
     <string name="samoola_wlc_screen">Mr. Samoola is ready to serve you...</string>
-    <string name="server_client_id">1094259072728-uptnbo3u9ogatofs78709hiimis8ulhq.apps.googleusercontent.com</string>
+    <string name="server_client_id">1094259072728-2124s3r6mlqevbt921pp19ttd7e8bmlk.apps.googleusercontent.com</string>
     <string name="facebook_app_id">503181565269665</string>
     <string name="fb_login_protocol_scheme">fb503181565269665</string>
     <string name="facebook_client_token">cf57a37ab697a53030144c6ea3ed5bf0</string>

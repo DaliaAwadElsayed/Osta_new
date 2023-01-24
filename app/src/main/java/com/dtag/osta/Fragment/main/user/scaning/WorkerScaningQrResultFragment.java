@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;import com.dtag.osta.databinding.WorkerScaningQrResultFragmentBinding;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.dtag.osta.Activity.MainActivity;
 import com.dtag.osta.Fragment.ViewModel.main.user.scaning.WorkerScaningQrResultViewModel;
+import com.dtag.osta.databinding.WorkerScaningQrResultFragmentBinding;
 
 public class WorkerScaningQrResultFragment extends Fragment {
 
@@ -34,7 +36,7 @@ public class WorkerScaningQrResultFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         ((MainActivity) getActivity()).showBottomMenu();
 
-        mViewModel = ViewModelProviders.of(this).get(WorkerScaningQrResultViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(WorkerScaningQrResultViewModel.class);
 mViewModel.Init(workerScaningQrResultFragmentBinding,getContext(),getArguments().getString("agentName"),getArguments().getString("agentPhone"),getArguments().getString("agentCategory"),getArguments().getString("agentImage"),getArguments().getInt("order_id_result"));
     }
 

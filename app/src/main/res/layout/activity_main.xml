@@ -49,30 +49,6 @@
                 android:fitsSystemWindows="true"
                 app:itemTextColor="@color/whiteColor"
                >
-                <!--                <ImageView-->
-                <!--                    android:id="@+id/logoutId"-->
-                <!--                    android:layout_width="@dimen/_25sdp"-->
-                <!--                    android:layout_height="@dimen/_25sdp"-->
-                <!--                    android:layout_marginTop="10dp"-->
-                <!--                    android:layout_marginStart="@dimen/_10sdp"-->
-                <!--                    android:layout_gravity="center"-->
-                <!--                    android:src="@drawable/logout"/>-->
-
-                <TextView
-                    android:id="@+id/logout_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:background="@drawable/border_white_rounded_more"
-                    android:gravity="center"
-                    android:padding="@dimen/small_margin"
-                    android:src="@drawable/logout"
-                    android:text="@string/logout"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textColor="@color/basicColor"
-                    android:textSize="@dimen/medum_text_size" />
 
             </com.google.android.material.navigation.NavigationView>
 

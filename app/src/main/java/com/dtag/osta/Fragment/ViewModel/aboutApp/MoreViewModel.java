@@ -1,14 +1,17 @@
 package com.dtag.osta.Fragment.ViewModel.aboutApp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.navigation.Navigation;
 
+import com.dtag.osta.Activity.MainActivity;
 import com.dtag.osta.R;
 import com.dtag.osta.databinding.MoreFragmentBinding;
 import com.dtag.osta.network.Interface.Api;
@@ -26,10 +29,19 @@ public class MoreViewModel extends ViewModel {
     MoreFragmentBinding moreFragmentBinding;
     Context context;
     private Api apiInterface = RetrofitClient.getInstance().getApi();
+    String type;
+    Activity activity;
 
-    public void init(MoreFragmentBinding moreFragmentBinding, Context context) {
+    public void init(MoreFragmentBinding moreFragmentBinding, Context context, Activity activity) {
         this.context = context;
         this.moreFragmentBinding = moreFragmentBinding;
+        this.activity = activity;
+        moreFragmentBinding.backId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.offersFragment);
+            }
+        });
         clicks();
     }
 
@@ -45,6 +57,10 @@ public class MoreViewModel extends ViewModel {
                                 " " + response.body().getData().getUser().getTotal_wallet() + context.getResources().getString(R.string.sar));
                         Picasso.get().load(RetrofitClient.BASE_URL + '/' + response.body().getData().getUser().getImage()).error(R.drawable.ic_account).placeholder(R.drawable.ic_account)
                                 .into(moreFragmentBinding.profileImage);
+                        if (response.body().getData().getUser().getSocial_type().equals("google")) {
+                            type = "google";
+                        }
+
                     }
                 }
             }
@@ -69,6 +85,10 @@ public class MoreViewModel extends ViewModel {
         moreFragmentBinding.langId.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.settingFragment));
         moreFragmentBinding.infoId.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.aboutAppFragment));
         moreFragmentBinding.logoutId.setOnClickListener(v -> {
+            if (type.equals("google")) {
+                ((MainActivity) activity).googleLogOut();
+
+            }
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             builder.setTitle(R.string.app_name);
             builder.setIcon(R.drawable.logo);

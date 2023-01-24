@@ -31,12 +31,13 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.asksira.bsimagepicker.BSImagePicker;
 import com.bumptech.glide.Glide;
 import com.dtag.osta.Activity.MainActivity;
+import com.dtag.osta.Fragment.ViewModel.authentication.user.auth.RegisterationViewModel;
 import com.dtag.osta.Fragment.ViewModel.authentication.worker.auth.WorkerRegisterationViewModel;
 import com.dtag.osta.Fragment.maps.MapFragment;
 import com.dtag.osta.R;
@@ -53,7 +54,9 @@ import com.dtag.osta.utility.DatePickerRegisterationFragment;
 import com.dtag.osta.utility.Sal7haSharedPreference;
 import com.dtag.osta.utility.Utility;
 import com.github.vipulasri.timelineview.TimelineView;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
 import com.squareup.picasso.Picasso;
 
@@ -121,7 +124,7 @@ public class WorkerRegisterationFragment extends Fragment implements
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(WorkerRegisterationViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(WorkerRegisterationViewModel.class);
         mViewModel.Init(workerRegisterationFragmentBinding, getContext());
         ccp = (CountryCodePicker) workerRegisterationFragmentBinding.getRoot().findViewById(R.id.ccp);
 
@@ -1109,36 +1112,36 @@ public class WorkerRegisterationFragment extends Fragment implements
     }
 
     private void getDeviceToken(String userToken) {
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(task -> {
-                    if (!task.isSuccessful()) {
-                        Log.w(TimelineView.TAG, "getInstanceId failed", task.getException());
-                        return;
-                    }
-                    // Get new Instance ID token
-                    String token = task.getResult().getToken();
-                    Log.i(TimelineView.TAG, "device token" + token);
-                    setToken.setDevice_token(token);
-                    setToken.setType("android");
-                    apiInterface.agentSetToken(userToken, setToken).enqueue(new Callback<ApiResponse>() {
-                        @Override
-                        public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
-                            if (response.body() != null && response.isSuccessful()) {
-                                if (response.body().getStatus()) {
-                                    Log.i(TAG, "DEVICE TOKEN" + setToken.getDevice_token());
-                                    //  Toast.makeText(context, setToken.getDevice_token(), Toast.LENGTH_SHORT).show();
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        // Get new FCM registration token
+                        String deviceToken = task.getResult();
+                        setToken.setDevice_token(deviceToken);
+                        setToken.setType("android");
+                        apiInterface.UserSetToken(userToken, setToken).enqueue(new Callback<ApiResponse>() {
+                            @Override
+                            public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                                if (response.body() != null && response.isSuccessful()) {
+                                    if (response.body().getStatus()) {
+                                        //  Toast.makeText(context, setToken.getDevice_token(), Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             }
-                        }
 
-                        @Override
-                        public void onFailure(@NotNull Call<ApiResponse> call, @NotNull Throwable t) {
-                            Log.e(TimelineView.TAG, "onFailure: ", t);
-                        }
-                    });
-
-
+                            @Override
+                            public void onFailure(@NotNull Call<ApiResponse> call, @NotNull Throwable t) {
+                                Log.e(TAG, "onFailure: ", t);
+                            }
+                        });
+                    }
                 });
+
     }
 
 

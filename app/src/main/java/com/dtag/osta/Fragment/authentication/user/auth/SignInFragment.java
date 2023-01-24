@@ -16,7 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.dtag.osta.Activity.MainActivity;
 import com.dtag.osta.Fragment.ViewModel.authentication.user.auth.SignInViewModel;
@@ -65,7 +65,7 @@ public class SignInFragment extends Fragment {
             showDialogConfirmation(getContext());
         });
 
-        mViewModel = ViewModelProviders.of(this).get(SignInViewModel.class);
+        mViewModel =new ViewModelProvider(this).get(SignInViewModel.class);
         mViewModel.Init(signInFragmentBinding, getContext());
         signInFragmentBinding.googleId.setOnClickListener(new View.OnClickListener() {
             @Override

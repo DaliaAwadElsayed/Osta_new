@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.dtag.osta.R;
 import com.dtag.osta.Fragment.ViewModel.main.agent.AgentSendPreviewingViewModel;
+import com.dtag.osta.R;
 
 public class AgentSendPreviewingFragment extends Fragment {
 
@@ -30,7 +30,7 @@ public class AgentSendPreviewingFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(AgentSendPreviewingViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(AgentSendPreviewingViewModel.class);
         // TODO: Use the ViewModel
     }
 

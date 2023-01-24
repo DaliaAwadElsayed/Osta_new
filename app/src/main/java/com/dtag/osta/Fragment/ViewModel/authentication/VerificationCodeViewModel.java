@@ -2,8 +2,12 @@ package com.dtag.osta.Fragment.ViewModel.authentication;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,6 +42,12 @@ public class VerificationCodeViewModel extends ViewModel {
         this.verificationCodeFragmentBinding = verificationCodeFragmentBinding;
         this.context = context;
         this.phoneNumberArgument = phoneNumberArgument;
+        verificationCodeFragmentBinding.backId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.signinfragment);
+            }
+        });
         verificationCodeFragmentBinding.sendagainlinear.setAlpha(0.5f);
         new CountDownTimer(120000, 1000) {
 
@@ -54,7 +64,8 @@ public class VerificationCodeViewModel extends ViewModel {
                         public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                             if (response.body() != null && response.isSuccessful()) {
                                 if (response.body().getStatus()) {
-                                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Log.i("COODEEEE", response.body().getMessage() + "?");
+//                                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                     verificationCodeFragmentBinding.enter.setOnClickListener(view1 -> {
                                         if (codeValid()) {
                                             final Dialog dialog = new Dialog(context);
@@ -193,12 +204,18 @@ public class VerificationCodeViewModel extends ViewModel {
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.code_sucess_dialog);
         Button done;
+        TextView textView;
         done = dialog.findViewById(R.id.done);
+        textView = dialog.findViewById(R.id.textdialog);
+        done = dialog.findViewById(R.id.done);
+        ImageView imageView = dialog.findViewById(R.id.imagedialog);
+        imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.success));
+        textView.setText(context.getResources().getString(R.string.truecode));
         if (dialog != null) {
             int width = ViewGroup.LayoutParams.MATCH_PARENT;
             int height = ViewGroup.LayoutParams.WRAP_CONTENT;
             dialog.getWindow().setLayout(width, height);
-            // dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         }
         done.setOnClickListener(v -> {
@@ -220,13 +237,13 @@ public class VerificationCodeViewModel extends ViewModel {
         imageView = dialog.findViewById(R.id.imagedialog);
         textView = dialog.findViewById(R.id.textdialog);
         done = dialog.findViewById(R.id.done);
-//        imageView.setImageResource(R.drawable.key);/////
+        imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.fail));
         textView.setText(context.getResources().getString(R.string.invalidcodee));
         if (dialog != null) {
             int width = ViewGroup.LayoutParams.MATCH_PARENT;
             int height = ViewGroup.LayoutParams.WRAP_CONTENT;
             dialog.getWindow().setLayout(width, height);
-            // dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         }
         done.setOnClickListener(v -> {

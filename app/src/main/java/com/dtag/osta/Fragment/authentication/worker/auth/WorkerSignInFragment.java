@@ -16,7 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.dtag.osta.Fragment.ViewModel.authentication.worker.auth.WorkerSignInViewModel;
 import com.dtag.osta.R;
@@ -61,8 +61,7 @@ public class WorkerSignInFragment extends Fragment {
         workerSignInFragmentBinding.forgetpassword.setOnClickListener(view -> {
             showDialogConfirmation(getContext());
         });
-
-        mViewModel = ViewModelProviders.of(this).get(WorkerSignInViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(WorkerSignInViewModel.class);
         mViewModel.Init(workerSignInFragmentBinding, getContext());
     }
 

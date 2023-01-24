@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.asksira.bsimagepicker.BSImagePicker;
 import com.bumptech.glide.Glide;
@@ -47,7 +47,7 @@ public class ProfileFragment extends Fragment implements BSImagePicker.OnSingleI
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
        if(!Sal7haSharedPreference.isLoggedIn(getContext())){
            
        }

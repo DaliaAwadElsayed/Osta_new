@@ -6,9 +6,8 @@ import android.util.Log;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModel;
-import androidx.navigation.Navigation;
 
-import com.dtag.osta.R;
+import com.dtag.osta.Activity.MainActivity;
 import com.dtag.osta.databinding.SplashFragmentBinding;
 import com.dtag.osta.utility.Sal7haSharedPreference;
 
@@ -29,8 +28,7 @@ public class SplashViewModel extends ViewModel {
             } catch (Exception e) {
             }
             handler.post(() -> {
-                Navigation.findNavController(splashFragmentBinding.getRoot()).navigate(R.id.samoolaFragment);
-
+                ((MainActivity) activity).splash();
                 Log.i("lang", Sal7haSharedPreference.getSelectedLanguageId(splashFragmentBinding.getRoot().getContext()));
 //                if (!Sal7haSharedPreference.getSelectedLanguageId(splashFragmentBinding.getRoot().getContext()).isEmpty()) {
 //                    Navigation.findNavController(splashFragmentBinding.getRoot()).navigate(R.id.samoolaFragment);

@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.dtag.osta.Activity.MainActivity;
-import com.dtag.osta.databinding.OrderDetailsFragmentBinding;
 import com.dtag.osta.Fragment.ViewModel.orders.OrderDetailsViewModel;
+import com.dtag.osta.databinding.OrderDetailsFragmentBinding;
 
 public class OrderDetailsFragment extends Fragment {
 
@@ -33,7 +33,8 @@ public class OrderDetailsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(OrderDetailsViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(OrderDetailsViewModel.class);
+
         ((MainActivity) getActivity()).showBottomMenu();
         mViewModel.Init(orderDetailsFragmentBinding, getContext(),getArguments().getInt("order_id"),getArguments().getBoolean("isNotification",false),getArguments().getString("body"));
     }

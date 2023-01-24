@@ -222,14 +222,14 @@ public class ProfileViewModel extends ViewModel implements DatePickerFragment.On
         profileFragmentBinding.backId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("CLIIICKKS","YES");
+                Log.i("CLIIICKKS", "YES");
                 Navigation.findNavController(v).navigate(R.id.off);
             }
         });
         profileFragmentBinding.changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("CLIIICKKS","YES");
+                Log.i("CLIIICKKS", "YES");
                 Navigation.findNavController(v).navigate(R.id.changePasswordFragment);
             }
         });
@@ -246,6 +246,9 @@ public class ProfileViewModel extends ViewModel implements DatePickerFragment.On
                         String phone_number = response.body().getData().getUser().getPhone();
                         Integer points = response.body().getData().getUser().getPoints();
                         Integer credits = response.body().getData().getUser().getCredits();
+                        if (response.body().getData().getUser().getSocial_type().equals("google") || response.body().getData().getUser().getSocial_type().equals("facebook")) {
+                            profileFragmentBinding.changePassword.setVisibility(View.GONE);
+                        }
 //                        city = Utility.fixNullString(response.body().getData().getUser().getArea().getCity().getNameEn());
                         //                 area = Utility.fixNullString(response.body().getData().getUser().getArea().getNameEn());
                         profileFragmentBinding.basicName.setText(Utility.fixNullString(basicName));
@@ -410,8 +413,6 @@ public class ProfileViewModel extends ViewModel implements DatePickerFragment.On
             }
         });
     }*/
-
-
 
 
 //    public void changePasswordDialogAgent() {

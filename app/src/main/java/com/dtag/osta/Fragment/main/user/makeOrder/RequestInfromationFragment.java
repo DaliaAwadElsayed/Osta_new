@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.asksira.bsimagepicker.BSImagePicker;
 import com.bumptech.glide.Glide;
@@ -73,7 +73,7 @@ public class RequestInfromationFragment extends Fragment implements TimePickerFr
             mViewModel.dialog.setTargetFragment(RequestInfromationFragment.this, 1);
             mViewModel.dialog.show(getFragmentManager(), "MyCustomDialog");
         });
-        mViewModel = ViewModelProviders.of(this).get(RequestInfromationViewModel.class);
+        mViewModel =new ViewModelProvider(this).get(RequestInfromationViewModel.class);
         if (mViewModel.dialog == null)
             mViewModel.dialog = new MapFragment();
 

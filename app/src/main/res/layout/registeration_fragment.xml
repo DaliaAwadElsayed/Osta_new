@@ -25,11 +25,11 @@
                 app:titleTextColor="@color/black">
 
                 <ImageView
-                    android:tint="@color/black"
                     android:id="@+id/backId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_keyboard_backspace_24" />
+                    android:src="@drawable/ic_baseline_keyboard_backspace_24"
+                    android:tint="@color/black" />
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -53,6 +53,7 @@
                         android:layout_marginEnd="@dimen/_4sdp"
                         android:layout_marginBottom="@dimen/_3sdp"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/black"
                         android:fontFamily="@font/urw_geometric_arabic_regular"
                         android:hint="@string/firstname"
                         android:inputType="textPersonName"
@@ -70,6 +71,7 @@
                         android:layout_marginEnd="@dimen/_4sdp"
                         android:layout_marginBottom="@dimen/_3sdp"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/black"
                         android:fontFamily="@font/urw_geometric_arabic_regular"
                         android:hint="@string/secondname"
                         android:inputType="textPersonName"
@@ -114,6 +116,14 @@
                         android:singleLine="true"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:background="@color/black" />
+
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -150,6 +160,14 @@
                         android:singleLine="true"
                         android:textColor="@color/black"
                         android:textColorHint="@color/black" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:background="@color/black" />
+
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <EditText
@@ -157,9 +175,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
                     android:layout_marginEnd="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/grey"
+                    android:backgroundTint="@color/black"
                     android:fontFamily="@font/urw_geometric_arabic_regular"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
@@ -175,13 +194,33 @@
                     android:layout_marginEnd="@dimen/_4sdp"
                     android:orientation="horizontal">
 
-                    <com.rilixtech.widget.countrycodepicker.CountryCodePicker
-                        android:id="@+id/ccp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:layout_gravity="center"
                         android:layout_marginStart="@dimen/very_small_margin"
-                        android:layout_marginTop="@dimen/small_margin"
-                        android:layout_marginEnd="@dimen/very_small_margin" />
+                        android:layout_marginTop="@dimen/very_small_margin"
+                        android:layout_marginBottom="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/very_small_margin"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                            android:id="@+id/ccp"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                           />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_below="@+id/area"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:background="@color/black" />
+
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/phone_id"
@@ -189,6 +228,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/very_small_margin"
                         android:layout_marginBottom="@dimen/_3sdp"
+                        android:backgroundTint="@color/black"
                         android:fontFamily="@font/urw_geometric_arabic_regular"
                         android:hint="@string/phoneNumber"
                         android:inputType="phone"
@@ -224,13 +264,23 @@
 
                         <Spinner
                             android:id="@+id/city"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
-                            android:layout_gravity="start"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
                             android:layout_toEndOf="@+id/t_city"
                             android:backgroundTint="@color/basicColor"
                             android:textSize="@dimen/small_text_size" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_below="@+id/city"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:background="@color/black" />
+
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -240,6 +290,7 @@
                         android:layout_weight="1">
 
                         <TextView
+android:layout_centerVertical="true"
                             android:id="@+id/t_area"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -250,15 +301,24 @@
                             android:textStyle="bold" />
 
                         <Spinner
+                            android:layout_centerInParent="true"
                             android:id="@+id/area"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
                             android:layout_gravity="start"
                             android:layout_toEndOf="@+id/t_area"
                             android:backgroundTint="@color/basicColor"
-                            android:gravity="center_horizontal"
                             android:textSize="@dimen/small_text_size" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_below="@+id/area"
+                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:background="@color/black" />
+
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -272,6 +332,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:layout_centerVertical="true"
                         android:id="@+id/select_location_txt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -282,7 +343,16 @@
                         android:text="@string/location"
                         android:textColor="@color/black"
                         android:textSize="@dimen/medum_text_size" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:background="@color/black" />
+
                 </LinearLayout>
+
                 <ProgressBar
                     android:id="@+id/progress"
                     android:layout_width="wrap_content"
