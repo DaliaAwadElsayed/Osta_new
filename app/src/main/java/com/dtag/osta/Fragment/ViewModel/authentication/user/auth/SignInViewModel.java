@@ -122,10 +122,10 @@ public class SignInViewModel extends ViewModel {
             Sal7haSharedPreference.setRole(context, Sal7haSharedPreference.Role.USER.Role);
             Navigation.findNavController(view).navigate(R.id.signInPhoneNumberFragment);
         });
-        signInFragmentBinding.image.setOnClickListener(view -> {
-            Sal7haSharedPreference.setRole(context, Sal7haSharedPreference.Role.AGENT.Role);
-            Navigation.findNavController(view).navigate(R.id.workerSignInFragment);
-        });
+//        signInFragmentBinding.image.setOnClickListener(view -> {
+//            Sal7haSharedPreference.setRole(context, Sal7haSharedPreference.Role.AGENT.Role);
+//            Navigation.findNavController(view).navigate(R.id.workerSignInFragment);
+//        });
     }
 
 

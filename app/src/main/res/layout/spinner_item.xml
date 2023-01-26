@@ -4,5 +4,6 @@
     android:layout_height="wrap_content"
     android:padding="5dp"
     android:gravity="center"
-    android:textColor="@color/colorPrimaryDark"
+    android:textStyle="bold"
+    android:textColor="@color/black"
     android:textSize="@dimen/medum_text_size" />

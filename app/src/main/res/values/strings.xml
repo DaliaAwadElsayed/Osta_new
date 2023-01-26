@@ -184,10 +184,10 @@
     <string name="enterthecodesenttotheemail">Enter Your Reset Code</string>
     <string name="passwordmustbemorethan6characters">Please follow Guidelines for Strong Passwords</string>
     <string name="therequesthasbeensuccessfullycanceled">The request has been successfully canceled</string>
-    <string name="newstatus">new orders</string>
-    <string name="cancelledorder">cancelled orders</string>
-    <string name="completedorder">completed orders</string>
-    <string name="rated">Rated</string>
+    <string name="newstatus">NEW ORDERS</string>
+    <string name="cancelledorder">CANCELLED ORDERS</string>
+    <string name="completedorder">COMPLETED ORDERS</string>
+    <string name="rated">RATED ORDER</string>
     <string name="completed">completed</string>
     <string name="neww">New</string>
     <string name="completedd">completed</string>
@@ -297,4 +297,6 @@
     <string name="more">More</string>
     <string name="preview_reports">Preview Reports</string>
     <string name="electronic_value">The electronic wallet is</string>
+    <string name="rewards">Rewards</string>
+    <string name="return_order">Return Orders</string>
 </resources>

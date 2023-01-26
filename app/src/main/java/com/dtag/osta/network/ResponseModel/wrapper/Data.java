@@ -4,6 +4,7 @@ import com.dtag.osta.network.ResponseModel.Model.City;
 import com.dtag.osta.network.ResponseModel.Model.Services;
 import com.dtag.osta.network.ResponseModel.Model.agent.Agent;
 import com.dtag.osta.network.ResponseModel.Model.agent.OrderStat;
+import com.dtag.osta.network.ResponseModel.Model.notification.Notifications;
 import com.dtag.osta.network.ResponseModel.Model.orderList.Category;
 import com.dtag.osta.network.ResponseModel.Model.orderList.Order;
 import com.dtag.osta.network.ResponseModel.Model.setting.Setting;
@@ -106,6 +107,222 @@ public class Data {
     @SerializedName("order_stat")
     @Expose
     private List<OrderStat> orderStat = null;
+    @SerializedName("notifications")
+    @Expose
+    private Notifications notifications;
+    @SerializedName("notifiable_id")
+    @Expose
+    private Integer notifiableId;
+    @SerializedName("user_role")
+    @Expose
+    private String userRole;
+    @SerializedName("user_id")
+    @Expose
+    private Integer userId;
+    @SerializedName("title")
+    @Expose
+    private String title;
+    @SerializedName("body")
+    @Expose
+    private String body;
+    @SerializedName("url")
+    @Expose
+    private String url;
+    @SerializedName("ajax")
+    @Expose
+    private Integer ajax;
+    @SerializedName("viewed")
+    @Expose
+    private Integer viewed;
+    @SerializedName("timeinmin")
+    @Expose
+    private String timeinmin;
+    @SerializedName("reward_value")
+    @Expose
+    private String reward_value;
+    public String getNameAr() {
+        return nameAr;
+    }
+
+    public String getReward_value() {
+        return reward_value;
+    }
+
+    public void setReward_value(String reward_value) {
+        this.reward_value = reward_value;
+    }
+
+    public void setNameAr(String nameAr) {
+        this.nameAr = nameAr;
+    }
+
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public String getTextAr() {
+        return textAr;
+    }
+
+    public void setTextAr(String textAr) {
+        this.textAr = textAr;
+    }
+
+    public String getTextEn() {
+        return textEn;
+    }
+
+    public void setTextEn(String textEn) {
+        this.textEn = textEn;
+    }
+
+    public String getCoupon() {
+        return coupon;
+    }
+
+    public void setCoupon(String coupon) {
+        this.coupon = coupon;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Notifications getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(Notifications notifications) {
+        this.notifications = notifications;
+    }
+
+    public Integer getNotifiableId() {
+        return notifiableId;
+    }
+
+    public void setNotifiableId(Integer notifiableId) {
+        this.notifiableId = notifiableId;
+    }
+
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Integer getAjax() {
+        return ajax;
+    }
+
+    public void setAjax(Integer ajax) {
+        this.ajax = ajax;
+    }
+
+    public Integer getViewed() {
+        return viewed;
+    }
+
+    public void setViewed(Integer viewed) {
+        this.viewed = viewed;
+    }
+
+    public String getTimeinmin() {
+        return timeinmin;
+    }
+
+    public void setTimeinmin(String timeinmin) {
+        this.timeinmin = timeinmin;
+    }
 
     public List<OrderStat> getOrderStat() {
         return orderStat;
@@ -114,6 +331,7 @@ public class Data {
     public void setOrderStat(List<OrderStat> orderStat) {
         this.orderStat = orderStat;
     }
+
     public List<Setting> getSettings() {
         return settings;
     }
@@ -121,6 +339,7 @@ public class Data {
     public void setSettings(List<Setting> settings) {
         this.settings = settings;
     }
+
     public Category getCategory() {
         return category;
     }

@@ -12,11 +12,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.dtag.osta.Activity.MainActivity;
 import com.dtag.osta.Fragment.ViewModel.aboutApp.ReportViewModel;
-import com.dtag.osta.R;
+import com.dtag.osta.databinding.ReportFragmentBinding;
 
 public class ReportFragment extends Fragment {
 
     private ReportViewModel mViewModel;
+    ReportFragmentBinding reportFragmentBinding;
 
     public static ReportFragment newInstance() {
         return new ReportFragment();
@@ -25,7 +26,8 @@ public class ReportFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.report_fragment, container, false);
+        reportFragmentBinding = ReportFragmentBinding.inflate(inflater, container, false);
+        return reportFragmentBinding.getRoot();
     }
 
     @Override
@@ -33,6 +35,7 @@ public class ReportFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(ReportViewModel.class);
         ((MainActivity) getActivity()).showBottomMenu();
+        mViewModel.init(reportFragmentBinding, getContext());
     }
 
 }

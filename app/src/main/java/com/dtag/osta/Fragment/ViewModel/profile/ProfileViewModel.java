@@ -149,7 +149,7 @@ public class ProfileViewModel extends ViewModel implements DatePickerFragment.On
                         profileFragmentBinding.category.setText(categoryName);
                         profileFragmentBinding.brithdayId.setText(birthdate);
                         profileFragmentBinding.rate.setRating(response.body().getData().getAgent().getRate());
-                        Picasso.get().load(RetrofitClient.BASE_URL + '/' + response.body().getData().getAgent().getImage()).error(R.drawable.ic_account).placeholder(R.drawable.ic_account)
+                        Picasso.get().load(RetrofitClient.BASE_URL + '/' + response.body().getData().getAgent().getImage()).error(R.drawable.ic_profile).placeholder(R.drawable.ic_profile)
                                 .into(profileFragmentBinding.profileImage);
                     }
                 }
@@ -246,8 +246,13 @@ public class ProfileViewModel extends ViewModel implements DatePickerFragment.On
                         String phone_number = response.body().getData().getUser().getPhone();
                         Integer points = response.body().getData().getUser().getPoints();
                         Integer credits = response.body().getData().getUser().getCredits();
-                        if (response.body().getData().getUser().getSocial_type().equals("google") || response.body().getData().getUser().getSocial_type().equals("facebook")) {
+                        if (response.body().getData().getUser().getSocial_type() == null) {
+                            profileFragmentBinding.changePassword.setVisibility(View.VISIBLE);
+                        } else if (response.body().getData().getUser().getSocial_type().equals("google") || response.body().getData().getUser().getSocial_type().equals("facebook")) {
                             profileFragmentBinding.changePassword.setVisibility(View.GONE);
+                        } else {
+                            profileFragmentBinding.changePassword.setVisibility(View.VISIBLE);
+
                         }
 //                        city = Utility.fixNullString(response.body().getData().getUser().getArea().getCity().getNameEn());
                         //                 area = Utility.fixNullString(response.body().getData().getUser().getArea().getNameEn());
@@ -258,7 +263,7 @@ public class ProfileViewModel extends ViewModel implements DatePickerFragment.On
                         profileFragmentBinding.address.setText(Utility.fixNullString(address));
                         profileFragmentBinding.pointid.setText("" + points);
                         profileFragmentBinding.creditid.setText("" + credits);
-                        Picasso.get().load(RetrofitClient.BASE_URL + '/' + response.body().getData().getUser().getImage()).error(R.drawable.ic_account).placeholder(R.drawable.ic_account)
+                        Picasso.get().load(RetrofitClient.BASE_URL + '/' + response.body().getData().getUser().getImage()).error(R.drawable.ic_profile).placeholder(R.drawable.ic_profile)
                                 .into(profileFragmentBinding.profileImage);
                     }
                 }
@@ -478,7 +483,7 @@ public class ProfileViewModel extends ViewModel implements DatePickerFragment.On
     }
 
     public void onMultiImageSelected(List<Uri> uriList, String tag) {
-        Picasso.get().load(uriList.get(0)).placeholder(R.drawable.ic_account).into(profileFragmentBinding.profileImage);
+        Picasso.get().load(uriList.get(0)).placeholder(R.drawable.ic_profile).into(profileFragmentBinding.profileImage);
         imagesEncoded = null;
         imagesEncoded = Utility.compressImage(context, uriList.get(0), "image");
         profileFragmentBinding.progressImage.setVisibility(View.VISIBLE);

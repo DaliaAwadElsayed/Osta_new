@@ -3,6 +3,8 @@ package com.dtag.osta.Fragment.ViewModel.main.services;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.lifecycle.ViewModel;
 import androidx.navigation.Navigation;
@@ -13,6 +15,7 @@ import com.dtag.osta.databinding.OffersFragmentBinding;
 import com.dtag.osta.network.Interface.Api;
 import com.dtag.osta.network.ResponseModel.wrapper.ApiResponse;
 import com.dtag.osta.network.ResponseModel.wrapper.RetrofitClient;
+import com.dtag.osta.utility.Sal7haSharedPreference;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +33,7 @@ public class OffersViewModel extends ViewModel {
         serviceAdapter = new ServiceAdapter(context);
         offersFragmentBinding.homeRecyclerView.setAdapter(serviceAdapter);
         offersFragmentBinding.progress.setVisibility(View.VISIBLE);
+        notification();
         offersFragmentBinding.notificationId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,4 +64,34 @@ public class OffersViewModel extends ViewModel {
         });
         this.offersFragmentBinding = offersFragmentBinding;
     }
+
+    private void notification() {
+        apiInterface.getNotifications(Sal7haSharedPreference.getToken(context),0).enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.body() != null && response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        if (!response.body().getData().getNotifications().getData().isEmpty()) {
+                            int size = response.body().getData().getNotifications().getTotal();
+                            offersFragmentBinding.notificationBadge.setText(size + "");
+                            offersFragmentBinding.notificationBadge.setVisibility(View.VISIBLE);
+                            Animation shake = AnimationUtils.loadAnimation(context, R.anim.shake);
+                            offersFragmentBinding.notificationId.startAnimation(shake);
+                            offersFragmentBinding.notificationBadge.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                            offersFragmentBinding.notificationBadge.setVisibility(View.GONE);
+
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable throwable) {
+
+            }
+        });
+    }
+
 }

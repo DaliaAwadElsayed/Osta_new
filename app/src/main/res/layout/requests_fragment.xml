@@ -2,12 +2,30 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout
+    android:background="@drawable/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBarId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        app:titleTextColor="@color/black">
 
+        <ImageView
+            android:id="@+id/backId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_keyboard_backspace_24" />
+
+    </androidx.appcompat.widget.Toolbar>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_43sdp"
-        android:background="@drawable/background">
+>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -21,13 +39,13 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+
                 <Spinner
                     android:id="@+id/spinnerStatus"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/spinner"
                     android:gravity="center"
-                    android:padding="@dimen/very_small_margin"
                     android:singleLine="true"
                     android:textStyle="bold" />
 
@@ -42,6 +60,7 @@
                     tools:listitem="@layout/request_item" />
 
                 <LinearLayout
+                    android:layout_marginTop="@dimen/_30sdp"
                     android:id="@+id/no_result_linear"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -50,11 +69,10 @@
                     android:visibility="gone"
                     android:gravity="center">
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/_200sdp"
+                        android:layout_height="@dimen/_200sdp"
                         android:layout_gravity="center"
-                        android:src="@drawable/maintenance" />
-
+                        android:src="@drawable/samoola" />
 
                     <TextView
                         android:id="@+id/no_result_tv"
@@ -80,7 +98,9 @@
 
 
 
-    </FrameLayout>
+        </FrameLayout>
 
     </ScrollView>
+
+</LinearLayout>
 </layout>

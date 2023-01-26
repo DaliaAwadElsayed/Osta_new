@@ -14,7 +14,6 @@
             android:id="@+id/toolBarId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="4dp"
             android:minHeight="?attr/actionBarSize"
             app:titleTextColor="@color/black">
 
@@ -24,35 +23,67 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_6sdp">
 
-                <ImageView
-                    android:id="@+id/notificationId"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                <RelativeLayout
+                    android:id="@+id/notificationLayoutId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:gravity="center"
-                    android:src="@drawable/ic_baseline_notifications_24" />
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/notificationId"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_baseline_notifications_24" />
+
+                    <TextView
+                        android:id="@+id/notification_badge"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/ic_notification_circle"
+                        android:gravity="center"
+                        android:padding="2dp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="7sp"
+                        android:visibility="gone"
+                        tools:text="5" />
+
+                </RelativeLayout>
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_weight="6"
                     android:alpha="0.7"
                     android:background="@drawable/border_white_rounded_more"
-                    android:backgroundTint="@color/quantum_grey200"
+                    android:backgroundTint="#E1E1E1"
                     android:drawableStart="@drawable/ic_search"
                     android:drawablePadding="@dimen/_8sdp"
-                    android:drawableTint="#979494"
+                    android:drawableTint="#939292"
                     android:hint="@string/samoola_wlc_screen"
                     android:padding="@dimen/_6sdp"
-                    android:textColorHint="@color/quantum_grey500" />
+                    android:textColorHint="@color/quantum_grey500"
+                    android:textSize="12dp" />
 
-                <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:src="@drawable/samoola" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:src="@drawable/samoola" />
+                </LinearLayout>
+
 
             </LinearLayout>
 

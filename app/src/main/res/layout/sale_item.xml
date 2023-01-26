@@ -33,12 +33,14 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
+                    android:id="@+id/imageView"
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="@dimen/_100sdp"
                     android:layout_gravity="center"
                     android:background="@drawable/promote"
                     android:foregroundGravity="center"
-                    android:scaleType="center"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="@dimen/_10sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.454"
@@ -60,7 +62,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="@dimen/medum_text_size" />
+            android:textSize="14dp" />
 
 
     </LinearLayout>

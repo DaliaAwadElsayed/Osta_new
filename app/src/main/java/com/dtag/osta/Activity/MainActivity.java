@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements
         activityMainBinding.homeNavigationView.setItemIconTintList(null);
         NavigationUI.setupWithNavController(activityMainBinding.homeNavigationView, navController);
         NavigationUI.setupWithNavController(activityMainBinding.bottomNav, navController);
-        activityMainBinding.homeDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        activityMainBinding.homeDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         bottomMenu();
         appSetting();
         //facebook

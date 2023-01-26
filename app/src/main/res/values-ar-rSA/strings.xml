@@ -298,4 +298,6 @@
     <string name="more">المزيد</string>
     <string name="preview_reports">مراجعة التقارير</string>
     <string name="electronic_value">قيمة المحفظة الاٍلكترونية</string>
+    <string name="rewards">المكافأت</string>
+    <string name="return_order">الطلبات المرتجعة</string>
 </resources>

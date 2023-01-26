@@ -26,6 +26,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface Api {
@@ -245,13 +246,22 @@ public interface Api {
     //{{base}}/api/user/reservation/create
     @POST("api/user/reservation/create")
     Call<ApiResponse> createReservation(@Header("token") String token, @Body Order order);
+
     //https://samoola.dtagdev.com/api/socialLogin
     //String loginAs, String name,String email,String phone, String socialId, String socialType
     @FormUrlEncoded
     @POST("/api/socialLogin")
     Call<ApiResponse> socialLogin(@Field("login_as") String loginAs, @Field("name") String name
-            , @Field("email") String email  , @Field("phone") String phone  ,
-                                  @Field("social_id") String socialId  , @Field("social_type") String socialType);
+            , @Field("email") String email, @Field("phone") String phone,
+                                  @Field("social_id") String socialId, @Field("social_type") String socialType);
 
+    //https://samoola.dtagdev.com/api/user/notifications
+    @GET("api/user/notifications")
+    Call<ApiResponse> getNotifications(@Header("token") String token,@Query("page") int page);
+
+    //https://osta.dtagdev.com/api/user/notifications/view
+    @FormUrlEncoded
+    @POST("api/user/notifications/view")
+    Call<ApiResponse> readNotification(@Header("token") String token, @Field("notification_id") int id);
 
 }

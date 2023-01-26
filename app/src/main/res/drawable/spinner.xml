@@ -4,16 +4,15 @@
         <layer-list>
             <item>
                 <shape>
-                    <stroke android:width="2dp"  android:color="@color/basicColor" />
+                    <solid android:color="@color/whiteColor"></solid>
+                    <stroke android:width="2dp"  android:color="@color/whiteColor" />
                     <corners android:radius="16dp" />
-                    <padding
-                        android:bottom="5dp" android:left="5dp" android:right="5dp" android:top="5dp" />
-                </shape>
+                   </shape>
             </item>
 
-            <item android:left="5dp" android:right="15dp">
+            <item>
                 <bitmap android:gravity="left" android:src="@drawable/menu"
-                    android:tint="@color/basicColor"/>
+                    android:tint="@color/black"/>
             </item>
         </layer-list>
     </item>

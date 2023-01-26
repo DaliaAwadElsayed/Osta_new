@@ -13,7 +13,9 @@ public class Sales {
     @SerializedName("name_en")
     @Expose
     private String nameEn;
-
+    @SerializedName("image")
+    @Expose
+    private String image;
     public Sales() {
     }
 
@@ -27,6 +29,14 @@ public class Sales {
 
     public String getNameAr() {
         return nameAr;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setNameAr(String nameAr) {

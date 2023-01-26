@@ -55,11 +55,8 @@ public class MoreViewModel extends ViewModel {
                         moreFragmentBinding.nameId.setText(name + "");
                         moreFragmentBinding.electronicId.setText(context.getResources().getString(R.string.electronic_value) +
                                 " " + response.body().getData().getUser().getTotal_wallet() + context.getResources().getString(R.string.sar));
-                        Picasso.get().load(RetrofitClient.BASE_URL + '/' + response.body().getData().getUser().getImage()).error(R.drawable.ic_account).placeholder(R.drawable.ic_account)
+                        Picasso.get().load(RetrofitClient.BASE_URL + '/' + response.body().getData().getUser().getImage()).error(R.drawable.ic_profile).placeholder(R.drawable.ic_profile)
                                 .into(moreFragmentBinding.profileImage);
-                        if (response.body().getData().getUser().getSocial_type().equals("google")) {
-                            type = "google";
-                        }
 
                     }
                 }
@@ -87,7 +84,6 @@ public class MoreViewModel extends ViewModel {
         moreFragmentBinding.logoutId.setOnClickListener(v -> {
             if (type.equals("google")) {
                 ((MainActivity) activity).googleLogOut();
-
             }
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             builder.setTitle(R.string.app_name);

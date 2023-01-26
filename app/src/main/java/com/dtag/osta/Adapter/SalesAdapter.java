@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dtag.osta.R;
 import com.dtag.osta.databinding.SaleItemBinding;
 import com.dtag.osta.network.ResponseModel.Model.user.sales.Sales;
+import com.dtag.osta.network.ResponseModel.wrapper.RetrofitClient;
 import com.dtag.osta.utility.Sal7haSharedPreference;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -62,6 +64,7 @@ public class SalesAdapter extends RecyclerView.Adapter<SalesAdapter.SalesViewHol
         private void bindSales(Sales sales) {
             Bundle bundle = new Bundle();
             bundle.putInt("id", sales.getId());
+            Picasso.get().load(RetrofitClient.BASE_URL + '/' + sales.getImage()).error(R.drawable.promote).placeholder(R.drawable.promote).into(saleItemBinding.imageView);
             if (Sal7haSharedPreference.getSelectedLanguage(context) == 1) {
                 saleItemBinding.salename.setText(sales.getNameAr());
             } else {
@@ -70,7 +73,7 @@ public class SalesAdapter extends RecyclerView.Adapter<SalesAdapter.SalesViewHol
 
             itemView.setOnClickListener(view -> {
                 //   bundle.putInt("categoryId", services.getId());
-                Navigation.findNavController(view).navigate(R.id.salesDetailsFragment,bundle);
+                Navigation.findNavController(view).navigate(R.id.salesDetailsFragment, bundle);
 
             });
 
