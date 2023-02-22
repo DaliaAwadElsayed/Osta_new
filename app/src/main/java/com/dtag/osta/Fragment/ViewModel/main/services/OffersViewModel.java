@@ -34,6 +34,12 @@ public class OffersViewModel extends ViewModel {
         offersFragmentBinding.homeRecyclerView.setAdapter(serviceAdapter);
         offersFragmentBinding.progress.setVisibility(View.VISIBLE);
         notification();
+        offersFragmentBinding.contactUsId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.supportFragment);
+            }
+        });
         offersFragmentBinding.notificationId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +72,7 @@ public class OffersViewModel extends ViewModel {
     }
 
     private void notification() {
-        apiInterface.getNotifications(Sal7haSharedPreference.getToken(context),0).enqueue(new Callback<ApiResponse>() {
+        apiInterface.getNotifications(Sal7haSharedPreference.getToken(context), 0).enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.body() != null && response.isSuccessful()) {
@@ -78,8 +84,7 @@ public class OffersViewModel extends ViewModel {
                             Animation shake = AnimationUtils.loadAnimation(context, R.anim.shake);
                             offersFragmentBinding.notificationId.startAnimation(shake);
                             offersFragmentBinding.notificationBadge.setVisibility(View.VISIBLE);
-                        }
-                        else {
+                        } else {
                             offersFragmentBinding.notificationBadge.setVisibility(View.GONE);
 
                         }

@@ -187,10 +187,14 @@
     <string name="enterthecodesenttotheemail">"أدخل  رمز إعادة التعيين الخاص بك"</string>
     <string name="passwordmustbemorethan6characters">من فضلك اتبع ارشادات لكلمه مرور قويه</string>
     <string name="therequesthasbeensuccessfullycanceled">لقد تم الغاء الطلب بنجاح</string>
-    <string name="cancelledorder">"الطلبات الملغيه "</string>
-    <string name="completedorder">الطلبات المنتهيه</string>
-    <string name="newstatus">الطلبات الجديده</string>
-    <string name="rated">تم التقيم</string>
+    <string name="cancelledorder">"الطلبات الملغية "</string>
+    <string name="completedorder">الطلبات المنتهية</string>
+    <string name="newstatus">الطلبات الجديدة</string>
+    <string name="rated">تم التقييم</string>
+    <string name="newpreview">المعاينات الجديدة</string>
+    <string name="cancelledpreview">المعاينات الملغية</string>
+    <string name="completedpreview">المعاينات المنتهية</string>
+    <string name="ratedpreview">تم التقييم</string>
     <string name="no_orders">لا توجد طلبات جديده</string>
     <string name="completed">منتهي</string>
     <string name="completedd">مكتمل</string>
@@ -273,7 +277,7 @@
     <string name="loginactive">تم التسجيل بنجاح , سوف تستلم اشعار عند تفعيل الحساب</string>
     <string name="somethinghappenswrong">حدث خطأ ما</string>
     <string name="activiation_notification">لقد تم تفعيل الحساب الشخصي لك . من فضلك حاول تسجيل الدخول الان!</string>
-    <string name="descrption_txt">Enter Your Maintenance Description Here And Upload A Picture Of The amaged Area …..</string>
+    <string name="descrption_txt">أدخل وصف الصيانة الخاص بك هنا وقم بتحميل صورة للمنطقة المتضررة .....</string>
     <string name="verify">Verify</string>
     <string name="you_have_problem">لديك مشكلة؟ مستر صمولة في خدمتك...</string>
     <string name="resend_code">اٍعادة اٍرسال الكود:</string>
@@ -300,4 +304,7 @@
     <string name="electronic_value">قيمة المحفظة الاٍلكترونية</string>
     <string name="rewards">المكافأت</string>
     <string name="return_order">الطلبات المرتجعة</string>
+    <string name="preview_type">"نوع المعاينة "</string>
+    <string name="invoice">الفاتورة</string>
+    <string name="redeem_points">"استبدال النقاط "</string>
 </resources>

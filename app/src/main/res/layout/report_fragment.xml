@@ -38,6 +38,8 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/linearId"
+                    android:layoutDirection="ltr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -46,23 +48,6 @@
                     android:gravity="center"
                     android:transitionGroup="false">
 
-                    <TextView
-                        android:gravity="center"
-                        android:layout_gravity="center"
-                        android:id="@+id/ordersClickId"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/right_click"
-                        android:backgroundTint="@color/whiteColor"
-                        android:paddingStart="@dimen/large_margin"
-                        android:paddingTop="@dimen/very_small_margin"
-                        android:paddingEnd="@dimen/large_margin"
-                        android:paddingBottom="@dimen/very_small_margin"
-                        android:text="@string/return_order"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/small_text_size"
-                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/rewardClickId"
@@ -79,6 +64,23 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:textColor="@color/whiteColor"
+                        android:textSize="@dimen/small_text_size"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:id="@+id/ordersClickId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/right_click"
+                        android:backgroundTint="@color/whiteColor"
+                        android:paddingStart="@dimen/large_margin"
+                        android:paddingTop="@dimen/very_small_margin"
+                        android:paddingEnd="@dimen/large_margin"
+                        android:paddingBottom="@dimen/very_small_margin"
+                        android:text="@string/return_order"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/small_text_size"
                         android:textStyle="bold" />
 

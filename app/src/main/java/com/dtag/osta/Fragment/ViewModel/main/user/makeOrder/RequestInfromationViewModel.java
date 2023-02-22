@@ -101,12 +101,13 @@ public class RequestInfromationViewModel extends ViewModel
         dialog = new MapFragment();
     }
 
-    public void Init(RequestInfromationFragmentBinding requestInfromationFragmentBinding, Context context, int catId, int catPostion, FragmentActivity fragmentActivity, String lat, String lang, String address) {
+    public void Init(RequestInfromationFragmentBinding requestInfromationFragmentBinding, Context context,
+                     int catId, int catPostion, FragmentActivity fragmentActivity,
+                     String lat, String lang, String address) {
         this.requestInfromationFragmentBinding = requestInfromationFragmentBinding;
         this.context = context;
         this.fragmentActivity = fragmentActivity;
         selectedItemIdselected = catId;
-
         imageViewAdapter = new ImageViewAdapter(new ArrayList<>(), context);
         Log.i(TAG, "SELECTION" + selectedItemIdselected + "" + catPostion);
         ///////
@@ -731,7 +732,8 @@ public class RequestInfromationViewModel extends ViewModel
     public void sendInput(String lat, String lang, String address) {
         requestInfromationFragmentBinding.lat.setText(lat);
         requestInfromationFragmentBinding.lang.setText(lang);
-//        requestInfromationFragmentBinding.address.setText(address);
+        Log.i("INPUTSSS", lat + "---" + lang);
+
     }
 
     private void getCategory() {

@@ -315,7 +315,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
     private void appSetting() {
-        Log.i("loginstatus", "?" + Sal7haSharedPreference.isLoggedIn(this)+"/"+Sal7haSharedPreference.getRole(this));
+        Log.i("loginstatus", "?" + Sal7haSharedPreference.isLoggedIn(this) + "/" + Sal7haSharedPreference.getRole(this));
         if (Sal7haSharedPreference.isLoggedIn(this)) {
             if (Sal7haSharedPreference.getRole(this).equals("user")) {
                 navController.navigate(R.id.offersFragment);
@@ -539,7 +539,15 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public void splash() {
-        navController.navigate(R.id.samoolaFragment);
-    }
+        Log.i("HAPPEN", "yes");
+        if (Sal7haSharedPreference.isLoggedIn(this)) {
+            if (Sal7haSharedPreference.getRole(this).equals("user")) {
+                navController.navigate(R.id.offersFragment);
+            }
+        }
+        else {
+            navController.navigate(R.id.samoolaFragment);
+        }
 
+    }
 }

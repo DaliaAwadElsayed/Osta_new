@@ -13,9 +13,19 @@ public class CancelOrder {
     @SerializedName("status")
     @Expose
     private String status;
-
+    @SerializedName("construction_preview_id")
+    @Expose
+    private Integer construction_preview_id;
     public Integer getOrderId() {
         return orderId;
+    }
+
+    public Integer getConstruction_preview_id() {
+        return construction_preview_id;
+    }
+
+    public void setConstruction_preview_id(Integer construction_preview_id) {
+        this.construction_preview_id = construction_preview_id;
     }
 
     public void setOrderId(Integer orderId) {

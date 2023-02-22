@@ -74,6 +74,7 @@
     <string name="verygood">Very Good :)</string>
     <string name="excellent">Excellent !!!</string>
     <string name="servicetype">Service Type</string>
+    
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="descrption">Descrption</string>
@@ -188,6 +189,10 @@
     <string name="cancelledorder">CANCELLED ORDERS</string>
     <string name="completedorder">COMPLETED ORDERS</string>
     <string name="rated">RATED ORDER</string>
+    <string name="newpreview">NEW PREVIEW</string>
+    <string name="cancelledpreview">CANCELLED PREVIEW</string>
+    <string name="completedpreview">COMPLETED PREVIEW</string>
+    <string name="ratedpreview">RATED PREVIEW</string>
     <string name="completed">completed</string>
     <string name="neww">New</string>
     <string name="completedd">completed</string>
@@ -270,7 +275,7 @@
     <string name="loginactive">Successfully Register,You will receive a notification when it is activated</string>
     <string name="somethinghappenswrong">Something wrong happens</string>
     <string name="activiation_notification">your account is active now,please try to login in!</string>
-    <string name="descrption_txt">Enter Your Maintenance Description Here And Upload A Picture Of The amaged Area …..</string>
+    <string name="descrption_txt">Enter Your Maintenance Description Here And Upload A Picture Of The damaged Area …..</string>
     <string name="verify">Verify</string>
     <string name="deactive">In Active</string>
     <string name="activec">Active</string>
@@ -299,4 +304,7 @@
     <string name="electronic_value">The electronic wallet is</string>
     <string name="rewards">Rewards</string>
     <string name="return_order">Return Orders</string>
+    <string name="preview_type">Preview type</string>
+    <string name="invoice">Invoice</string>
+    <string name="redeem_points">Redeem Points</string>
 </resources>

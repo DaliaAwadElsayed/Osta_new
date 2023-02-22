@@ -74,7 +74,6 @@ public class OrderDetailsViewModel extends ViewModel implements ViewPager.OnPage
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.body() != null) {
                     orderDetailsFragmentBinding.progress.setVisibility(View.GONE);
-                    Picasso.get().load(RetrofitClient.BASE_URL + '/' + response.body().getData().getOrder().getAgent().getImage()).error(R.drawable.ic_baseline_cancel_24).into(orderDetailsFragmentBinding.img);
                     imageBannerAdapter.setImages(response.body().getData().getOrder().getUploadedImages());
 
                     if (response.body().getStatus() && response.isSuccessful()) {
@@ -84,8 +83,11 @@ public class OrderDetailsViewModel extends ViewModel implements ViewPager.OnPage
                             orderDetailsFragmentBinding.servicename.setText(Utility.fixNullString(response.body().getData().getOrder().getCategory().getNameEn()));
                         }
                         orderDetailsFragmentBinding.status.setText(Utility.fixNullString(response.body().getData().getOrder().getStatus()));
-                        orderDetailsFragmentBinding.name.setText(Utility.fixNullString(response.body().getData().getOrder().getAgent().getName()));
-                        orderDetailsFragmentBinding.phoneNumber.setText(Utility.fixNullString(response.body().getData().getOrder().getAgent().getPhone()));
+                        if (response.body().getData().getOrder().getAgent() != null) {
+                            Picasso.get().load(RetrofitClient.BASE_URL + '/' + response.body().getData().getOrder().getAgent().getImage()).error(R.drawable.ic_baseline_cancel_24).into(orderDetailsFragmentBinding.img);
+                            orderDetailsFragmentBinding.name.setText(Utility.fixNullString(response.body().getData().getOrder().getAgent().getName()));
+                            orderDetailsFragmentBinding.phoneNumber.setText(Utility.fixNullString(response.body().getData().getOrder().getAgent().getPhone()));
+                        }
                         orderDetailsFragmentBinding.date.setText(Utility.fixNullString(response.body().getData().getOrder().getDate()));
                         orderDetailsFragmentBinding.time.setText(Utility.fixNullString(response.body().getData().getOrder().getTime()));
                         orderDetailsFragmentBinding.descrption.setText(Utility.fixNullString(response.body().getData().getOrder().getDescription()));

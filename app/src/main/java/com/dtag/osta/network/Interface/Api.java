@@ -257,11 +257,48 @@ public interface Api {
 
     //https://samoola.dtagdev.com/api/user/notifications
     @GET("api/user/notifications")
-    Call<ApiResponse> getNotifications(@Header("token") String token,@Query("page") int page);
+    Call<ApiResponse> getNotifications(@Header("token") String token, @Query("page") int page);
 
     //https://osta.dtagdev.com/api/user/notifications/view
     @FormUrlEncoded
     @POST("api/user/notifications/view")
     Call<ApiResponse> readNotification(@Header("token") String token, @Field("notification_id") int id);
+
+    //http://samoola.dtagdev.com/api/user/construction/Constructiontype
+    @GET("api/user/construction/Constructiontype")
+    Call<ApiResponse> getConstructionType();
+
+    //http://samoola.dtagdev.com/api/user/construction/list?status=approved
+    @GET("api/user/construction/list")
+    Call<ApiResponse> getConstList(@Header("token") String token, @Query("status[]") String status[]);
+
+    //http://127.0.0.1:8000/api/user/construction/show?construction_preview_id=8
+    @GET("api/user/construction/show")
+    Call<ApiResponse> invoice(@Header("token") String token, @Query("construction_preview_id") int construction_preview_id);
+
+    //http://127.0.0.1:8000/api/user/construction/Constructioncreate
+    @Multipart
+    @POST("api/user/construction/Constructioncreate")
+    Call<ApiResponse> makeConstruction(@Header("token") String token,
+                                       @Part("construction_type_id") RequestBody construction_type_id,
+                                       @Part("city_id") RequestBody city_id,
+                                       @Part("levels_count") RequestBody levels_count,
+                                       @Part("units_count") RequestBody units_count,
+                                       @Part("address") RequestBody address,
+                                       @Part("latitude") RequestBody latitude,
+                                       @Part("longitude") RequestBody longitude,
+                                       @Part("date") RequestBody date,
+                                       @Part("time") RequestBody time,
+                                       @Part("description") RequestBody description,
+                                       @Part("payment_method") RequestBody payment_method,
+                                       @Part("area") RequestBody area,
+                                       @Part List<MultipartBody.Part> images,
+                                       @Part("points") RequestBody points,
+                                       @Part("coupon") RequestBody coupon
+    );
+
+    //{{base}}/api/user/construction/updateOrder
+    @POST("/api/user/construction/updateOrder")
+    Call<ApiResponse> userCancelConstruction(@Header("token") String token, @Body CancelOrder order);
 
 }

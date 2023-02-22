@@ -33,6 +33,7 @@ public class ReportViewModel extends ViewModel {
     public void init(ReportFragmentBinding reportFragmentBinding, Context context) {
         this.context = context;
         this.reportFragmentBinding = reportFragmentBinding;
+        reportFragmentBinding.linearId.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         requestReportAdapter = new RequestReportAdapter(context);
         rewardsAdapter = new RewardsAdapter(context);
         reportFragmentBinding.returnOrderRecyclerId.setAdapter(requestReportAdapter);
@@ -71,6 +72,10 @@ public class ReportViewModel extends ViewModel {
             @Override
             public void onClick(View v) {
                 getRewards(1);
+                reportFragmentBinding.ordersClickId.setTextColor(context.getResources().getColor(R.color.black));
+                reportFragmentBinding.ordersClickId.setBackgroundColor(context.getResources().getColor(R.color.whiteColor));
+                reportFragmentBinding.rewardClickId.setTextColor(context.getResources().getColor(R.color.whiteColor));
+                reportFragmentBinding.rewardClickId.setBackgroundColor(context.getResources().getColor(R.color.basicColor));
                 reportFragmentBinding.idOrderNesteddSV.setVisibility(View.GONE);
                 reportFragmentBinding.idRewardNesteddSV.setVisibility(View.VISIBLE);
 
@@ -79,14 +84,16 @@ public class ReportViewModel extends ViewModel {
         reportFragmentBinding.ordersClickId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                reportFragmentBinding.ordersClickId.setTextColor(context.getResources().getColor(R.color.whiteColor));
+                reportFragmentBinding.ordersClickId.setBackgroundColor(context.getResources().getColor(R.color.basicColor));
+                reportFragmentBinding.rewardClickId.setTextColor(context.getResources().getColor(R.color.black));
+                reportFragmentBinding.rewardClickId.setBackgroundColor(context.getResources().getColor(R.color.whiteColor));
                 reportFragmentBinding.idOrderNesteddSV.setVisibility(View.VISIBLE);
                 reportFragmentBinding.idRewardNesteddSV.setVisibility(View.GONE);
                 getOrders(1);
             }
         });
-
     }
-
     private void getOrders(int page) {
         reportFragmentBinding.progress.setVisibility(View.VISIBLE);
         apiInterface.getNotifications(Sal7haSharedPreference.getToken(context), page).enqueue(new Callback<ApiResponse>() {
@@ -124,8 +131,6 @@ public class ReportViewModel extends ViewModel {
             }
         });
     }
-
-
     private void getRewards(int page) {
         reportFragmentBinding.progress.setVisibility(View.VISIBLE);
         apiInterface.getNotifications(Sal7haSharedPreference.getToken(context), page).enqueue(new Callback<ApiResponse>() {

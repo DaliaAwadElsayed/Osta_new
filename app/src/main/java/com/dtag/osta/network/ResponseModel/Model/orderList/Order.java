@@ -8,7 +8,15 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Order {
-
+    @SerializedName("construction_type_id")
+    @Expose
+    private Integer construction_type_id;
+    @SerializedName("levels_count")
+    @Expose
+    private Integer levels_count;
+    @SerializedName("units_count")
+    @Expose
+    private Integer units_count;
     @SerializedName("order_id")
     @Expose
     private Integer order_id;
@@ -127,6 +135,30 @@ public class Order {
 
     public void setUploadedImages(List<UploadedImage> uploadedImages) {
         this.uploadedImages = uploadedImages;
+    }
+
+    public Integer getConstruction_type_id() {
+        return construction_type_id;
+    }
+
+    public void setConstruction_type_id(Integer construction_type_id) {
+        this.construction_type_id = construction_type_id;
+    }
+
+    public Integer getLevels_count() {
+        return levels_count;
+    }
+
+    public void setLevels_count(Integer levels_count) {
+        this.levels_count = levels_count;
+    }
+
+    public Integer getUnits_count() {
+        return units_count;
+    }
+
+    public void setUnits_count(Integer units_count) {
+        this.units_count = units_count;
     }
 
     public Integer getId() {

@@ -125,9 +125,9 @@ public class MapFragment extends DialogFragment implements OnMapReadyCallback {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (Build.VERSION.SDK_INT < 21) {
-            mapDetail = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.map);
+            mapDetail = (SupportMapFragment) (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         } else {
-            mapDetail = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.map);
+            mapDetail = (SupportMapFragment) (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         }
         mapDetail.getMapAsync(this);
     }
@@ -136,7 +136,7 @@ public class MapFragment extends DialogFragment implements OnMapReadyCallback {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(MapViewModel.class);
-        SupportMapFragment mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
     }
@@ -250,7 +250,7 @@ public class MapFragment extends DialogFragment implements OnMapReadyCallback {
                                 mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
                                     @Override
                                     public void onMarkerDragStart(Marker marker) {
-                                        Log.i(TAG,"MOVESTART");
+                                        Log.i(TAG, "MOVESTART");
                                         if (marker != null) {
                                             mMap.clear();
                                         }
@@ -259,7 +259,7 @@ public class MapFragment extends DialogFragment implements OnMapReadyCallback {
 
                                     @Override
                                     public void onMarkerDrag(Marker marker) {
-                                        Log.i(TAG,"MOVENOW");
+                                        Log.i(TAG, "MOVENOW");
                                         if (marker != null) {
                                             mMap.clear();
 
@@ -269,7 +269,7 @@ public class MapFragment extends DialogFragment implements OnMapReadyCallback {
 
                                     @Override
                                     public void onMarkerDragEnd(Marker marker) {
-                                        Log.i(TAG,"MOVEEND");
+                                        Log.i(TAG, "MOVEEND");
                                         if (marker != null) {
                                             mMap.clear();
 
@@ -317,7 +317,7 @@ public class MapFragment extends DialogFragment implements OnMapReadyCallback {
                             mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
                                 @Override
                                 public void onMarkerDragStart(Marker marker) {
-                                    Log.i(TAG,"MOVESTART");
+                                    Log.i(TAG, "MOVESTART");
                                     if (marker != null) {
                                         mMap.clear();
                                         MarkerOptions markerOptions = new MarkerOptions();
@@ -333,7 +333,7 @@ public class MapFragment extends DialogFragment implements OnMapReadyCallback {
 
                                 @Override
                                 public void onMarkerDrag(Marker marker) {
-                                    Log.i(TAG,"MOVENOW");
+                                    Log.i(TAG, "MOVENOW");
                                     if (marker != null) {
                                         mMap.clear();
                                         MarkerOptions markerOptions = new MarkerOptions();
@@ -349,7 +349,7 @@ public class MapFragment extends DialogFragment implements OnMapReadyCallback {
 
                                 @Override
                                 public void onMarkerDragEnd(Marker marker) {
-                                    Log.i(TAG,"MOVEEND");
+                                    Log.i(TAG, "MOVEEND");
                                     if (marker != null) {
                                         mMap.clear();
                                         MarkerOptions markerOptions = new MarkerOptions();
@@ -378,10 +378,10 @@ public class MapFragment extends DialogFragment implements OnMapReadyCallback {
                                 // Add a default marker, because the user hasn't selected a place.
 
                                 MarkerOptions markerOptions = new MarkerOptions();
-                              mMap.addMarker(markerOptions
+                                mMap.addMarker(markerOptions
                                         .title(getString(R.string.default_info_title))
                                         .position(new LatLng(location.getLatitude(), location.getLongitude()))
-                                       .draggable(true)
+                                        .draggable(true)
                                         .snippet(getString(R.string.default_info_snippet)));
 
                             }
@@ -463,7 +463,6 @@ public class MapFragment extends DialogFragment implements OnMapReadyCallback {
     public void onStart() {
         super.onStart();
         Window window = getDialog().getWindow();
-
         WindowManager.LayoutParams windowParams = window.getAttributes();
         windowParams.dimAmount = 0.90f;
         windowParams.flags |= WindowManager.LayoutParams.FLAG_DIM_BEHIND;
@@ -493,9 +492,12 @@ public class MapFragment extends DialogFragment implements OnMapReadyCallback {
                             mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude()));
                     if (!latitude.equals("") && !longitude.equals("") && !address.equals("")) {
                         mOnInputSelected.sendInput(latitude, longitude, address);
+                        Log.i("INPUTSSS", latitude + "---" + address);
                         //  Toast.makeText(getContext(), "data" + latitude + longitude + address, Toast.LENGTH_SHORT).show();
                     }
                 } else {
+                    Log.i("INPUTSSS", latitude + "NULL" + address);
+
                     //  Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
                 }
 
