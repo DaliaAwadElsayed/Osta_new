@@ -65,7 +65,6 @@ public class ConstructionOrderAdapter extends RecyclerView.Adapter<ConstructionO
 
     public void setRequests(List<Order> orders) {
         this.orders = orders;
-        Collections.reverse(orders);
         notifyDataSetChanged();
     }
 

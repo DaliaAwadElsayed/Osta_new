@@ -261,4 +261,9 @@
         android:id="@+id/notificationFragment"
         android:name="com.dtag.osta.Fragment.aboutApp.NotificationFragment"
         android:label="NotificationFragment" />
+    <fragment
+        android:id="@+id/constructionTypeFragment"
+        android:name="com.dtag.osta.Fragment.ConstructionTypeFragment"
+        android:label="ConstructionTypeFragment" />
+
 </navigation>

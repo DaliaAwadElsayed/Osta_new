@@ -111,6 +111,12 @@ public class RequestInfromationViewModel extends ViewModel
         imageViewAdapter = new ImageViewAdapter(new ArrayList<>(), context);
         Log.i(TAG, "SELECTION" + selectedItemIdselected + "" + catPostion);
         ///////
+        requestInfromationFragmentBinding.backId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.offersFragment);
+            }
+        });
         apiInterface.serviceCategories().enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
@@ -132,7 +138,7 @@ public class RequestInfromationViewModel extends ViewModel
                                     String item = String.valueOf(requestInfromationFragmentBinding.servicetype.getItemAtPosition(i));
                                     Log.i(TAG, "xxx" + catIdList + adapterView.getItemAtPosition(i) + services.getId());
                                     selectedItemIdselected = catIdList.get(i);
-                                    Log.i(TAG,"NEW ID"+selectedItemIdselected);
+                                    Log.i(TAG, "NEW ID" + selectedItemIdselected);
                                 }
 
                                 @Override
@@ -218,7 +224,7 @@ public class RequestInfromationViewModel extends ViewModel
         });
 
         requestInfromationFragmentBinding.pictureRv.setLayoutManager(new
-                LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
+                LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
         requestInfromationFragmentBinding.pictureRv.setAdapter(imageViewAdapter);
 
         if (Sal7haSharedPreference.isLoggedIn(context)) {
@@ -241,9 +247,8 @@ public class RequestInfromationViewModel extends ViewModel
                         Log.i(TAG, "selectedcat" + selectedItemIdselected);
 
                         apiInterface.makeOrder(Sal7haSharedPreference.getToken(context),
-
                                 RequestBody.create(okhttp3.MediaType.parse("text/plain"), String.valueOf(selectedItemIdselected)),
-//                                RequestBody.create(okhttp3.MediaType.parse("text/plain"), requestInfromationFragmentBinding.address.getText().toString()),
+                                RequestBody.create(okhttp3.MediaType.parse("text/plain"), requestInfromationFragmentBinding.selectLocationTxt.getText().toString()),
                                 RequestBody.create(okhttp3.MediaType.parse("text/plain"), String.valueOf(cityId)),
                                 RequestBody.create(okhttp3.MediaType.parse("text/plain"), requestInfromationFragmentBinding.copounid.getText().toString()),
                                 RequestBody.create(okhttp3.MediaType.parse("text/plain"), requestInfromationFragmentBinding.lat.getText().toString()),
@@ -344,7 +349,7 @@ public class RequestInfromationViewModel extends ViewModel
                         Toast.makeText(context, R.string.codevalid, Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(context, R.string.codeinvalid, Toast.LENGTH_SHORT).show();
-                        requestInfromationFragmentBinding.copounid.setError(context.getResources().getString(R.string.codevalid));
+                        requestInfromationFragmentBinding.copounid.setError(context.getResources().getString(R.string.invalidcodee));
                         requestInfromationFragmentBinding.copounid.findFocus();
                     }
                 }
@@ -415,12 +420,12 @@ public class RequestInfromationViewModel extends ViewModel
     }
 
     private boolean addValid() {
-//        String addstring = requestInfromationFragmentBinding.address.getText().toString();
-//        if (!addstring.isEmpty()) {
-//            return true;
-//        }
-//        requestInfromationFragmentBinding.address.setError(context.getResources().getString(R.string.required));
-//        requestInfromationFragmentBinding.address.requestFocus();
+        String addstring = requestInfromationFragmentBinding.selectLocationTxt.getText().toString();
+        if (!addstring.isEmpty()) {
+            return true;
+        }
+        requestInfromationFragmentBinding.selectLocationTxt.setError(context.getResources().getString(R.string.required));
+        requestInfromationFragmentBinding.selectLocationTxt.requestFocus();
         return false;
     }
 
@@ -693,7 +698,7 @@ public class RequestInfromationViewModel extends ViewModel
     public void onMultiImageSelected(List<Uri> uriList, String tag) {
         imagesEncodedList = Utility.compressImageArray(context, uriList, "images");
         imageViewAdapter.imageList(uriList);
-        Log.i("IMAGE_LIST",imagesEncodedList.toString());
+        Log.i("IMAGE_LIST", imagesEncodedList.toString());
     }
 
     public void onCancelled(boolean isMultiSelecting, String tag) {
@@ -703,7 +708,7 @@ public class RequestInfromationViewModel extends ViewModel
     public void onSingleImageSelected(Uri uri, String tag) {
         imagesEncodedList = Collections.singletonList(Utility.compressImage(context, uri, "images[0]"));
         imageViewAdapter.imageList(Collections.singletonList(uri));
-        Log.i("IMAGE_LIST",imagesEncodedList.toString());
+        Log.i("IMAGE_LIST", imagesEncodedList.toString());
     }
 
 
@@ -732,6 +737,7 @@ public class RequestInfromationViewModel extends ViewModel
     public void sendInput(String lat, String lang, String address) {
         requestInfromationFragmentBinding.lat.setText(lat);
         requestInfromationFragmentBinding.lang.setText(lang);
+        requestInfromationFragmentBinding.selectLocationTxt.setText(address);
         Log.i("INPUTSSS", lat + "---" + lang);
 
     }

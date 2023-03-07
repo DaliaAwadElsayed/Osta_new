@@ -18,7 +18,6 @@ import com.dtag.osta.utility.Sal7haSharedPreference;
 import com.dtag.osta.utility.Utility;
 import com.squareup.picasso.Picasso;
 
-import java.util.Collections;
 import java.util.List;
 
 
@@ -41,7 +40,6 @@ public class RequestReportAdapter extends RecyclerView.Adapter<RequestReportAdap
 
     public void setRequests(List<Data> orders) {
         this.orders = orders;
-        Collections.reverse(orders);
         notifyDataSetChanged();
     }
 

@@ -104,21 +104,19 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
     }
 
     public void init(ConstructionFragmentBinding constructionFragmentBinding, Context context,
-     int catId, int catPostion, FragmentActivity fragmentActivity,
-                     String lat, String lang, String address) {
+                     FragmentActivity fragmentActivity) {
         this.constructionFragmentBinding = constructionFragmentBinding;
         this.context = context;
         this.fragmentActivity = fragmentActivity;
-        selectedItemIdselected = catId;
+
         imageViewAdapter = new ImageViewAdapter(new ArrayList<>(), context);
-        Log.i(TAG, "SELECTION" + selectedItemIdselected + "" + catPostion);
         ///////
         apiInterface.getConstructionType().enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 category = new ArrayList<String>();
                 ArrayList<Integer> catIdList = new ArrayList<Integer>();
-                for (Services services : response.body().getData().getServicesList()) {
+                for (Services services : response.body().getData().getConstruction_type()) {
                     catIdList.add(services.getId());
                     if (Sal7haSharedPreference.getSelectedLanguage(context) == 1) {
                         category.add(services.getName());
@@ -134,7 +132,7 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
                                     String item = String.valueOf(constructionFragmentBinding.servicetype.getItemAtPosition(i));
                                     Log.i(TAG, "xxx" + catIdList + adapterView.getItemAtPosition(i) + services.getId());
                                     selectedItemIdselected = catIdList.get(i);
-                                    Log.i(TAG,"NEW ID"+selectedItemIdselected);
+                                    Log.i(TAG, "NEW ID" + selectedItemIdselected);
                                 }
 
                                 @Override
@@ -161,7 +159,7 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
                 }
                 ArrayAdapter adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, category);
                 constructionFragmentBinding.servicetype.setAdapter(adapter);
-                constructionFragmentBinding.servicetype.setSelection(catPostion);
+                constructionFragmentBinding.servicetype.setSelection(0);
 
                 //  int pos = adapter.getItem(catPostion);
                 // requestInfromationFragmentBinding.servicetype.setSelection(selectedCatId);
@@ -189,8 +187,8 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
                 Toast.makeText(context, R.string.internetconnection, Toast.LENGTH_SHORT).show();
             }
         });
-        constructionFragmentBinding.lat.setText(lat);
-        constructionFragmentBinding.lang.setText(lang);
+        constructionFragmentBinding.lat.setText(0 + "");
+        constructionFragmentBinding.lang.setText(0 + "");
 //        requestInfromationFragmentBinding.address.setText(address);
 //        requestInfromationFragmentBinding.address.setText(Sal7haSharedPreference.getAddress(context));
         int areaId = Sal7haSharedPreference.getArea(context);
@@ -218,28 +216,23 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
         });
 
         constructionFragmentBinding.pictureRv.setLayoutManager(new
-                LinearLayoutManager(context, RecyclerView.HORIZONTAL,false));
+                LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
         constructionFragmentBinding.pictureRv.setAdapter(imageViewAdapter);
+        Log.i("typeeee","log");
 
         if (Sal7haSharedPreference.isLoggedIn(context)) {
+            Log.i("typeeee","yes");
             if (Sal7haSharedPreference.getRole(context).equals("agent")) {
                 constructionFragmentBinding.createOrder.setEnabled(false);
             } else if (Sal7haSharedPreference.getRole(context).equals("user")) {
                 constructionFragmentBinding.createOrder.setEnabled(true);
                 constructionFragmentBinding.createOrder.setOnClickListener(view -> {
-
-//                    if (BuildConfig.DEBUG) {
-//                        requestInfromationFragmentBinding.lat.setText("33.2222");
-//                        requestInfromationFragmentBinding.lang.setText("33.2222");
-//
-//                    }
-
+                    Log.i("click","yessss");
                     if (inputValid()) {
                         constructionFragmentBinding.progressMakeOrder.setVisibility(View.VISIBLE);
 //                    MultipartBody.Part[] images = (MultipartBody.Part[]) imagesEncodedList.toArray();
                         constructionFragmentBinding.createOrder.setEnabled(false);
                         Log.i(TAG, "selectedcat" + selectedItemIdselected);
-
                         apiInterface.makeConstruction(Sal7haSharedPreference.getToken(context),
                                 RequestBody.create(okhttp3.MediaType.parse("text/plain"), String.valueOf(selectedItemIdselected)),
                                 RequestBody.create(okhttp3.MediaType.parse("text/plain"), String.valueOf(cityId)),
@@ -254,9 +247,8 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
                                 RequestBody.create(okhttp3.MediaType.parse("text/plain"), paymentMethod),
                                 RequestBody.create(okhttp3.MediaType.parse("text/plain"), String.valueOf(areaId)),
                                 imagesEncodedList,
-                                RequestBody.create(okhttp3.MediaType.parse("text/plain"),constructionFragmentBinding.redeemId.getText().toString()),
-                                RequestBody.create(okhttp3.MediaType.parse("text/plain"),constructionFragmentBinding.copounid.getText().toString() )
-
+                                RequestBody.create(okhttp3.MediaType.parse("text/plain"), constructionFragmentBinding.redeemId.getText().toString()),
+                                RequestBody.create(okhttp3.MediaType.parse("text/plain"), constructionFragmentBinding.copounid.getText().toString())
                         )
                                 .enqueue(new Callback<ApiResponse>() {
 
@@ -339,6 +331,7 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
             logIn();
         }
     }
+
     private void checkCopoun() {
         apiInterface.checkCopoun(constructionFragmentBinding.copounid.getText().toString()).enqueue(new Callback<ApiResponse>() {
             @Override
@@ -348,7 +341,7 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
                         Toast.makeText(context, R.string.codevalid, Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(context, R.string.codeinvalid, Toast.LENGTH_SHORT).show();
-                        constructionFragmentBinding.copounid.setError(context.getResources().getString(R.string.codevalid));
+                        constructionFragmentBinding.copounid.setError(context.getResources().getString(R.string.codeinvalid));
                         constructionFragmentBinding.copounid.findFocus();
                     }
                 }
@@ -419,12 +412,12 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
     }
 
     private boolean addValid() {
-//        String addstring = requestInfromationFragmentBinding.address.getText().toString();
-//        if (!addstring.isEmpty()) {
-//            return true;
-//        }
-//        requestInfromationFragmentBinding.address.setError(context.getResources().getString(R.string.required));
-//        requestInfromationFragmentBinding.address.requestFocus();
+        String addstring = constructionFragmentBinding.selectLocationTxt.getText().toString();
+        if (!addstring.isEmpty()) {
+            return true;
+        }
+        constructionFragmentBinding.selectLocationTxt.setError(context.getResources().getString(R.string.required));
+        constructionFragmentBinding.selectLocationTxt.requestFocus();
         return false;
     }
 
@@ -554,7 +547,7 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
 
     public void pickImageFromGallery() {
         BSImagePicker pickerDialog = new BSImagePicker.Builder("com.dtag.osta.fileprovider")
-                .setTag("makeOrder")
+                .setTag("makeCons")
                 .setMaximumDisplayingImages(Integer.MAX_VALUE)
                 .isMultiSelect()
                 .useFrontCamera()
@@ -571,7 +564,7 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
                 .setGridSpacing(Utils.dp2px(2)) //Default: 2dp. Remember to pass in a value in pixel.
                 .setPeekHeight(Utils.dp2px(360)) //Default: 360dp. This is the initial height of the dialog.
                 .hideGalleryTile() //Default: show. Set this if you don't want to further let user select from a gallery app. In such case, I suggest you to set maximum displaying images to Integer.MAX_VALUE.
-                .setTag("makeOrder") //Default: null. Set this if you need to identify which picker is calling back your fragment / activity.
+                .setTag("makeCons") //Default: null. Set this if you need to identify which picker is calling back your fragment / activity.
                 .build();
 //        BSImagePicker pickerDialog = new BSImagePicker.Builder("com.dtag.sal7ha.fileprovider")
 //                .setTag("makeOrder")
@@ -697,7 +690,7 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
     public void onMultiImageSelected(List<Uri> uriList, String tag) {
         imagesEncodedList = Utility.compressImageArray(context, uriList, "images");
         imageViewAdapter.imageList(uriList);
-        Log.i("IMAGE_LIST",imagesEncodedList.toString());
+        Log.i("IMAGE_LIST", imagesEncodedList.toString());
     }
 
     public void onCancelled(boolean isMultiSelecting, String tag) {
@@ -707,7 +700,7 @@ public class ConstructionViewModel extends ViewModel implements DatePickerFragme
     public void onSingleImageSelected(Uri uri, String tag) {
         imagesEncodedList = Collections.singletonList(Utility.compressImage(context, uri, "images[0]"));
         imageViewAdapter.imageList(Collections.singletonList(uri));
-        Log.i("IMAGE_LIST",imagesEncodedList.toString());
+        Log.i("IMAGE_LIST", imagesEncodedList.toString());
     }
 
 

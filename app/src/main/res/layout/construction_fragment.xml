@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
+        android:layout_marginBottom="@dimen/_50sdp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background">
 
         <LinearLayout
-            android:layout_marginBottom="@dimen/_40sdp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/background"
@@ -518,6 +518,7 @@
                     android:inputType="text"
                     android:padding="@dimen/_8sdp"
                     android:singleLine="true"
+                    android:visibility="gone"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black" />
 
@@ -530,6 +531,7 @@
                     android:background="@color/gray_border" />
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/very_small_margin"
@@ -540,6 +542,7 @@
                     android:textStyle="bold" />
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/very_small_margin"

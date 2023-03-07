@@ -85,7 +85,7 @@ public class ConstructionFragment extends Fragment implements TimePickerFragment
         if (getArguments() != null)
             cat_postion = getArguments().getInt("catPositon");
         else cat_postion = 0;
-        mViewModel.init(constructionFragmentBinding, getActivity(), cat_id,cat_postion, getActivity(), getArguments().getString("lat"), getArguments().getString("long"), getArguments().getString("add"));
+        mViewModel.init(constructionFragmentBinding,getContext(), getActivity());
 
         /*if (getArguments() != null) {
             requestInfromationFragmentBinding.serviceName.setText(

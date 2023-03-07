@@ -64,7 +64,6 @@ public class ConstactionAdapter extends RecyclerView.Adapter<ConstactionAdapter.
 
     public void setRequests(List<Order> orders) {
         this.orders = orders;
-        Collections.reverse(orders);
         notifyDataSetChanged();
     }
 

@@ -85,6 +85,10 @@
         -->
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
+                <action android:name="com.iphonik.chameleon.AppPreferenceActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
                 <action android:name="offer" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

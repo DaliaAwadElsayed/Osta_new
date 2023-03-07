@@ -23,6 +23,9 @@ public class Data {
     @SerializedName("orders")
     @Expose
     private List<Order> orders = null;
+    @SerializedName("construction")
+    @Expose
+    private List<Order> construction = null;
     @SerializedName("cities")
     @Expose
     private List<City> cities = null;
@@ -140,6 +143,18 @@ public class Data {
     @SerializedName("reward_value")
     @Expose
     private String reward_value;
+    @SerializedName("construction_type")
+    @Expose
+    private List<Services> construction_type = null;
+
+    public List<Services> getConstruction_type() {
+        return construction_type;
+    }
+
+    public void setConstruction_type(List<Services> construction_type) {
+        this.construction_type = construction_type;
+    }
+
     public String getNameAr() {
         return nameAr;
     }
@@ -454,6 +469,14 @@ public class Data {
 
     public List<Order> getOrders() {
         return orders;
+    }
+
+    public List<Order> getConstruction() {
+        return construction;
+    }
+
+    public void setConstruction(List<Order> construction) {
+        this.construction = construction;
     }
 
     public void setOrders(List<Order> orders) {

@@ -1,10 +1,9 @@
 package com.dtag.osta.Fragment.ViewModel.aboutApp;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.telephony.PhoneNumberUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -68,11 +67,7 @@ public class SupportViewModel extends ViewModel {
                                 if (response.body().getStatus()) {
                                     String number = response.body().getData().getSettings().get(1).getValue();
                                     number = number.replace(" ", "").replace("+", "");
-                                    Intent sendIntent = new Intent("android.intent.action.MAIN");
-                                    sendIntent.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));
-                                    sendIntent.putExtra("jid", PhoneNumberUtils.stripSeparators(number) + "@s.whatsapp.net");
-                                    context.startActivity(sendIntent);
-
+                                 sendWhatsapp(number);
                                 } else {
                                     Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
                                 }
@@ -137,7 +132,22 @@ public class SupportViewModel extends ViewModel {
 
         });
     }
+    private void sendWhatsapp(String number) {
+        try {
+            Intent sendIntent = new Intent("android.intent.action.MAIN");
+            sendIntent.setAction(Intent.ACTION_VIEW);
+            sendIntent.setPackage("com.whatsapp");
+            String url = "https://api.whatsapp.com/send?phone=" + number ;
+            sendIntent.setData(Uri.parse(url));
+            context.startActivity(sendIntent);
 
+        } catch (Exception e) {
+            Log.i("EXCEPTIONn", e.toString());
+            Toast.makeText(context, "WhatsApp Not Install", Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
     private void technicalSupport() {
        /* apiInterface.support().enqueue(new Callback<ApiResponse>() {
             @Override

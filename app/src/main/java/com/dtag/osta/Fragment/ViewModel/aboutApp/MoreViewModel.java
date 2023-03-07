@@ -52,6 +52,7 @@ public class MoreViewModel extends ViewModel {
                 if (response.body() != null && response.isSuccessful()) {
                     if (response.body().getStatus()) {
                         String name = response.body().getData().getUser().getName();
+                        type=response.body().getData().getUser().getSocial_type();
                         moreFragmentBinding.nameId.setText(name + "");
                         moreFragmentBinding.electronicId.setText(context.getResources().getString(R.string.electronic_value) +
                                 " " + response.body().getData().getUser().getTotal_wallet() + context.getResources().getString(R.string.sar));
@@ -77,7 +78,7 @@ public class MoreViewModel extends ViewModel {
         });
         moreFragmentBinding.contractId.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.constructionFragment));
         moreFragmentBinding.orderId.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.requestsFragment));
-        moreFragmentBinding.reportId.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.reportFragment));
+        moreFragmentBinding.reportId.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.constructionTypeFragment));
         moreFragmentBinding.supportId.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.supportFragment));
         moreFragmentBinding.langId.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.settingFragment));
         moreFragmentBinding.infoId.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.aboutAppFragment));

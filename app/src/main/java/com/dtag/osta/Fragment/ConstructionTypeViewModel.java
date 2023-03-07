@@ -78,17 +78,17 @@ public class ConstructionTypeViewModel extends ViewModel {
                 if (Sal7haSharedPreference.getRole(context).equals("user")) {
                     String[] tmp = new String[type1.size()];
                     type1.toArray(tmp);
-                    apiInterface.userRequestsList(Sal7haSharedPreference.getToken(context), tmp).enqueue(new Callback<ApiResponse>() {
+                    apiInterface.getConstList(Sal7haSharedPreference.getToken(context), tmp.toString()).enqueue(new Callback<ApiResponse>() {
                         @Override
                         public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                             if (response.body() != null && response.isSuccessful()) {
                                 if (response.body().getStatus()) {
                                     constructionTypeFragmentBinding.progress.setVisibility(View.INVISIBLE);
-                                    requestAdapter.setRequests(response.body().getData().getOrders());
-                                    if (response.body().getData().getOrders().isEmpty()) {
+                                    requestAdapter.setRequests(response.body().getData().getConstruction());
+                                    if (response.body().getData().getConstruction().isEmpty()) {
                                         constructionTypeFragmentBinding.noResultLinear.setVisibility(View.VISIBLE);
                                     }
-                                    Log.i("TAG", "List" + response.body().getData().getOrders());
+                                    Log.i("TAG", "List" + response.body().getData().getConstruction());
                                 } else {
                                     Toast.makeText(context, "falsestatus", Toast.LENGTH_SHORT).show();
 
@@ -115,12 +115,12 @@ public class ConstructionTypeViewModel extends ViewModel {
                             if (response.body() != null && response.isSuccessful()) {
                                 if (response.body().getStatus()) {
                                     constructionTypeFragmentBinding.progress.setVisibility(View.INVISIBLE);
-                                    orders = response.body().getData().getOrders();
-                                    requestAdapter.setRequests(response.body().getData().getOrders());
-                                    if (response.body().getData().getOrders().isEmpty()) {
+                                    orders = response.body().getData().getConstruction();
+                                    requestAdapter.setRequests(response.body().getData().getConstruction());
+                                    if (response.body().getData().getConstruction().isEmpty()) {
                                         constructionTypeFragmentBinding.noResultLinear.setVisibility(View.VISIBLE);
                                     }
-                                    Log.i("TAG", "List" + response.body().getData().getOrders());
+                                    Log.i("TAG", "List" + response.body().getData().getConstruction());
                                 } else {
 //                                    Toast.makeText(context, "falsestatus", Toast.LENGTH_SHORT).show();
                                 }
@@ -151,17 +151,17 @@ public class ConstructionTypeViewModel extends ViewModel {
         if (Sal7haSharedPreference.getRole(context).equals("user")) {
             String[] tmp = new String[type1.size()];
             type1.toArray(tmp);
-            apiInterface.getConstList(Sal7haSharedPreference.getToken(context), tmp).enqueue(new Callback<ApiResponse>() {
+            apiInterface.getConstList(Sal7haSharedPreference.getToken(context), tmp.toString()).enqueue(new Callback<ApiResponse>() {
                 @Override
                 public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                     if (response.body() != null && response.isSuccessful()) {
                         if (response.body().getStatus()) {
                             constructionTypeFragmentBinding.progress.setVisibility(View.INVISIBLE);
-                            requestAdapter.setRequests(response.body().getData().getOrders());
-                            if (response.body().getData().getOrders().isEmpty()) {
+                            requestAdapter.setRequests(response.body().getData().getConstruction());
+                            if (response.body().getData().getConstruction().isEmpty()) {
                                 constructionTypeFragmentBinding.noResultLinear.setVisibility(View.VISIBLE);
                             }
-                            Log.i("TAG", "List" + response.body().getData().getOrders());
+                            Log.i("TAG", "List" + response.body().getData().getConstruction());
                         } else {
                             Toast.makeText(context, "falsestatus", Toast.LENGTH_SHORT).show();
 
@@ -188,12 +188,12 @@ public class ConstructionTypeViewModel extends ViewModel {
                     if (response.body() != null && response.isSuccessful()) {
                         if (response.body().getStatus()) {
                             constructionTypeFragmentBinding.progress.setVisibility(View.INVISIBLE);
-                            orders = response.body().getData().getOrders();
-                            requestAdapter.setRequests(response.body().getData().getOrders());
-                            if (response.body().getData().getOrders().isEmpty()) {
+                            orders = response.body().getData().getConstruction();
+                            requestAdapter.setRequests(response.body().getData().getConstruction());
+                            if (response.body().getData().getConstruction().isEmpty()) {
                                 constructionTypeFragmentBinding.noResultLinear.setVisibility(View.VISIBLE);
                             }
-                            Log.i("TAG", "List" + response.body().getData().getOrders());
+                            Log.i("TAG", "List" + response.body().getData().getConstruction());
                         } else {
                         }
                     } else {

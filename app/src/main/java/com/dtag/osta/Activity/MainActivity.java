@@ -30,6 +30,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.asksira.bsimagepicker.BSImagePicker;
 import com.bumptech.glide.Glide;
+import com.dtag.osta.Fragment.ConstructionFragment;
 import com.dtag.osta.Fragment.authentication.worker.auth.WorkerRegisterationFragment;
 import com.dtag.osta.Fragment.main.user.makeOrder.RequestInfromationFragment;
 import com.dtag.osta.Fragment.profile.ProfileFragment;
@@ -268,7 +269,12 @@ public class MainActivity extends AppCompatActivity implements
         } else if (Utility.fixNullString(tag).equals("profile")) {
             ProfileFragment profileFragment = (ProfileFragment) navHostFragment.getChildFragmentManager().getFragments().get(0);
             profileFragment.onMultiImageSelected(uriList, tag);
-        } else {
+        }
+        else if (Utility.fixNullString(tag).equals("makeCons")) {
+            ConstructionFragment profileFragment = (ConstructionFragment) navHostFragment.getChildFragmentManager().getFragments().get(0);
+            profileFragment.onMultiImageSelected(uriList, tag);
+        }
+        else {
             WorkerRegisterationFragment workerRegisterationFragment = (WorkerRegisterationFragment) navHostFragment.getChildFragmentManager().getFragments().get(0);
             workerRegisterationFragment.onMultiImageSelected(uriList, tag);
             Sal7haSharedPreference.saveAgentImage(this, uriList.get(0).getPath());

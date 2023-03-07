@@ -122,7 +122,7 @@ public interface Api {
     @POST("api/user/order")
     Call<ApiResponse> makeOrder(@Header("token") String token,
                                 @Part("category_id") RequestBody category_id,
-//                                @Part("address") RequestBody address,
+                                @Part("address") RequestBody address,
                                 @Part("city_id") RequestBody city_id,
                                 @Part("coupon") RequestBody coupon,
                                 @Part("latitude") RequestBody latitude,
@@ -270,7 +270,7 @@ public interface Api {
 
     //http://samoola.dtagdev.com/api/user/construction/list?status=approved
     @GET("api/user/construction/list")
-    Call<ApiResponse> getConstList(@Header("token") String token, @Query("status[]") String status[]);
+    Call<ApiResponse> getConstList(@Header("token") String token, @Query("status") String status);
 
     //http://127.0.0.1:8000/api/user/construction/show?construction_preview_id=8
     @GET("api/user/construction/show")
@@ -301,4 +301,7 @@ public interface Api {
     @POST("/api/user/construction/updateOrder")
     Call<ApiResponse> userCancelConstruction(@Header("token") String token, @Body CancelOrder order);
 
+    //http://127.0.0.1:8000/api/categories/search
+    @POST("api/categories/search")
+    Call<ApiResponse> searchCategories(@Query("name") String name);
 }

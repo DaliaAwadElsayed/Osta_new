@@ -1,6 +1,8 @@
 package com.dtag.osta.Fragment.ViewModel.main.services;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -30,10 +32,27 @@ public class OffersViewModel extends ViewModel {
 
     public void Init(OffersFragmentBinding offersFragmentBinding, Context context) {
         this.context = context;
+        this.offersFragmentBinding = offersFragmentBinding;
         serviceAdapter = new ServiceAdapter(context);
-        offersFragmentBinding.homeRecyclerView.setAdapter(serviceAdapter);
-        offersFragmentBinding.progress.setVisibility(View.VISIBLE);
         notification();
+        offersFragmentBinding.searchId.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.i("WORD?",offersFragmentBinding.searchId.getText().toString());
+                getSearch(offersFragmentBinding.searchId.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        getAll();
         offersFragmentBinding.contactUsId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,12 +65,20 @@ public class OffersViewModel extends ViewModel {
                 Navigation.findNavController(v).navigate(R.id.notificationFragment);
             }
         });
+
+    }
+
+    private void getAll() {
+        offersFragmentBinding.progress.setVisibility(View.VISIBLE);
         apiInterface.serviceCategories().enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.body() != null && response.isSuccessful()) {
                     if (response.body().getStatus()) {
                         Log.i(TAG, "SuccessHAHAH");
+                        offersFragmentBinding.homeRecyclerView.setVisibility(View.VISIBLE);
+                        offersFragmentBinding.searchRecyclerView.setVisibility(View.GONE);
+                        offersFragmentBinding.homeRecyclerView.setAdapter(serviceAdapter);
                         offersFragmentBinding.progress.setVisibility(View.GONE);
                         serviceAdapter.setServices(response.body().getData().getServicesList());
                         Log.i(TAG, "List" + response.body().getData().getServicesList());
@@ -68,7 +95,36 @@ public class OffersViewModel extends ViewModel {
                 offersFragmentBinding.noResultTv.setText(R.string.internetconnection);
             }
         });
-        this.offersFragmentBinding = offersFragmentBinding;
+
+    }
+
+    private void getSearch(String name) {
+        offersFragmentBinding.progress.setVisibility(View.VISIBLE);
+        apiInterface.searchCategories(name).enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.body() != null && response.isSuccessful()) {
+                    if (response.body().getStatus()) {
+                        Log.i(TAG, "SuccessSearch");
+                        offersFragmentBinding.homeRecyclerView.setVisibility(View.GONE);
+                        offersFragmentBinding.searchRecyclerView.setVisibility(View.VISIBLE);
+                        offersFragmentBinding.searchRecyclerView.setAdapter(serviceAdapter);
+                        offersFragmentBinding.progress.setVisibility(View.GONE);
+                        serviceAdapter.setServices(response.body().getData().getServicesList());
+                        Log.i(TAG, "List" + response.body().getData().getServicesList());
+                    }
+                } else {
+                    Log.i(TAG, "NoSuccessSearch");
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                offersFragmentBinding.progress.setVisibility(View.GONE);
+                offersFragmentBinding.noResultTv.setText(R.string.internetconnection);
+            }
+        });
     }
 
     private void notification() {

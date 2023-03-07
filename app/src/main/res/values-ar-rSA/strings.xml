@@ -6,15 +6,15 @@
         <item>قد وصلت</item>
         <item>منتهي</item>
     </string-array>
-    <string name="app_name">Samoola</string>
-    <string name="arabic">Arabic</string>
+    <string name="app_name">صامولة</string>
+    <string name="arabic">اللغة العربية</string>
     <string name="haveproblem">عندك مشكله ؟ صامولة في خدمتك</string>
     <string name="registerationphonenumber">ادخل رقم الهاتف لتسجيل الدخول</string>
     <string name="enter">دخول</string>
     <string name="acceptcondition">"لمتابعه لانشاء الحساب يجب ان توافق علي "</string>
     <string name="thetermsandconditions"><u>الشروط والاحكام</u></string>
     <string name="phoneNumber">رقم الجوال</string>
-    <string name="english">English</string>
+    <string name="english">اللغة الاٍنجليزية</string>
     <string name="entertheverificationcode">"أدخل رمز التحقق "</string>
     <string name="verifythecode">التحقيق من الرمز</string>
     <string name="sendagainwithinseconds">اعاده الارسال خلال</string>

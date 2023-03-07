@@ -65,7 +65,6 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.Services
 
     public void setRequests(List<Order> orders) {
         this.orders = orders;
-        Collections.reverse(orders);
         notifyDataSetChanged();
     }
 
