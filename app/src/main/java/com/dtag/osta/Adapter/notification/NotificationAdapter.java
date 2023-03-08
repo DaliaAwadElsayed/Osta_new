@@ -86,7 +86,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             if (Sal7haSharedPreference.getSelectedLanguage(context) == 1) {
                 storeGrideItemBinding.titleId.setText(Utility.fixNullString(String.valueOf(store.getBody())));
             } else {
-                storeGrideItemBinding.titleId.setText(Utility.fixNullString(String.valueOf(store.getBody())));
+                storeGrideItemBinding.titleId.setText(Utility.fixNullString(String.valueOf(store.getBody_en())));
             }
             storeGrideItemBinding.notificationItemId.setOnClickListener(new View.OnClickListener() {
                 @Override

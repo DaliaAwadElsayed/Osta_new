@@ -128,6 +128,12 @@ public class Data {
     @SerializedName("body")
     @Expose
     private String body;
+    @SerializedName("title_en")
+    @Expose
+    private String title_en;
+    @SerializedName("body_en")
+    @Expose
+    private String body_en;
     @SerializedName("url")
     @Expose
     private String url;
@@ -485,6 +491,22 @@ public class Data {
 
     public List<Services> getServicesList() {
         return servicesList;
+    }
+
+    public String getTitle_en() {
+        return title_en;
+    }
+
+    public void setTitle_en(String title_en) {
+        this.title_en = title_en;
+    }
+
+    public String getBody_en() {
+        return body_en;
+    }
+
+    public void setBody_en(String body_en) {
+        this.body_en = body_en;
     }
 
     public void setServicesList(List<Services> servicesList) {
